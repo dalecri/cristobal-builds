@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cristobal — Websites & Web Apps for Small Businesses</title>
+<meta name="description" content="Custom websites, interactive tools, and mobile apps for small businesses and creators. Fixed pricing, delivered in days, you own everything.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBFAF7; --card:#FFFFFF; --ink:#1C1917; --muted:#6B6459;
+    --line:#E9E2D6; --teal:#0F766E; --teal-dark:#0C5F59; --teal-soft:#E7F3F1;
+    --gold:#B45309; --gold-soft:#FBF0DC;
+    --shadow:0 1px 2px rgba(28,25,23,.05), 0 12px 32px -16px rgba(28,25,23,.18);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+  ::selection{background:var(--teal);color:#fff}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:20;background:rgba(251,250,247,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px}
+  .brand{font-weight:800;font-size:17px;text-decoration:none;color:var(--ink);letter-spacing:-.02em}
+  .brand b{color:var(--teal)}
+  .links{display:flex;gap:26px;align-items:center}
+  .links a{color:var(--muted);text-decoration:none;font-size:14.5px;font-weight:500}
+  .links a:hover{color:var(--ink)}
+  .links .nav-cta{background:var(--teal);color:#fff;padding:9px 20px;border-radius:999px;font-weight:600}
+  .links .nav-cta:hover{background:var(--teal-dark);color:#fff}
+  @media(max-width:700px){.links a:not(.nav-cta){display:none}}
+
+  /* hero */
+  header{position:relative;overflow:hidden;padding:96px 0 80px}
+  .blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;pointer-events:none}
+  .blob.a{width:480px;height:480px;background:#BFE3DD;top:-160px;right:-120px}
+  .blob.b{width:380px;height:380px;background:#F5E3BC;bottom:-200px;left:-140px}
+  header .wrap{position:relative}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--teal-soft);color:var(--teal-dark);font-size:13px;font-weight:600;padding:7px 16px;border-radius:999px;margin-bottom:24px}
+  h1{font-size:clamp(36px,5.6vw,60px);font-weight:800;letter-spacing:-.03em;line-height:1.08;margin-bottom:20px;max-width:16ch}
+  h1 span{color:var(--teal)}
+  .lede{font-size:18px;color:var(--muted);max-width:56ch;margin-bottom:36px}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px}
+  .btn{display:inline-block;font-weight:600;font-size:16px;text-decoration:none;border-radius:12px;padding:15px 30px;transition:transform .15s,box-shadow .15s,background .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn.solid{background:var(--teal);color:#fff;box-shadow:0 12px 24px -10px rgba(15,118,110,.5)}
+  .btn.solid:hover{background:var(--teal-dark)}
+  .btn.ghost{background:var(--card);color:var(--ink);border:1px solid var(--line);box-shadow:var(--shadow)}
+  .assurances{display:flex;gap:28px;flex-wrap:wrap}
+  .assurances div{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:500;color:var(--muted)}
+  .assurances svg{flex-shrink:0}
+
+  /* mockup */
+  .mock{margin-top:56px;background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);overflow:hidden;max-width:860px}
+  .mock-bar{display:flex;gap:7px;padding:14px 18px;border-bottom:1px solid var(--line);align-items:center}
+  .mock-bar i{width:11px;height:11px;border-radius:50%;background:var(--line)}
+  .mock-bar i:first-child{background:#E5A49A}.mock-bar i:nth-child(2){background:#EFD49A}.mock-bar i:nth-child(3){background:#A9D3B8}
+  .mock-url{margin-left:12px;background:var(--paper);border:1px solid var(--line);border-radius:8px;font-size:12.5px;color:var(--muted);padding:4px 14px;flex:1}
+  .mock-body{padding:40px 36px;display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
+  .mock-body h4{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
+  .mock-body h4 span{color:var(--teal)}
+  .mock-body p{font-size:14px;color:var(--muted);margin-bottom:18px}
+  .mock-btn{display:inline-block;background:var(--teal);color:#fff;font-size:13.5px;font-weight:600;padding:10px 22px;border-radius:10px}
+  .mock-cards{display:grid;gap:12px}
+  .mock-cards div{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13px}
+  .mock-cards div b{display:block;font-size:12px;color:var(--teal-dark);margin-bottom:2px}
+  @media(max-width:640px){.mock-body{grid-template-columns:1fr}}
+
+  /* sections */
+  section{padding:72px 0}
+  .kicker{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
+  h2{font-size:clamp(28px,4vw,40px);font-weight:800;letter-spacing:-.025em;line-height:1.15;margin-bottom:14px}
+  .sub{color:var(--muted);font-size:17px;max-width:60ch;margin-bottom:44px}
+
+  /* services */
+  .svc{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:48px;margin-bottom:32px}
+  .svc:last-child{margin-bottom:0}
+  .svc-top{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:36px;align-items:start}
+  .svc-top h3{font-size:26px;font-weight:800;letter-spacing:-.02em;margin-bottom:12px}
+  .svc-top p{color:var(--muted);font-size:15.5px}
+  .flow{list-style:none;counter-reset:flow}
+  .flow li{counter-increment:flow;display:flex;gap:14px;font-size:14.5px;color:var(--muted);padding:8px 0}
+  .flow li::before{content:counter(flow);flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--teal-soft);color:var(--teal-dark);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+  @media(max-width:760px){.svc-top{grid-template-columns:1fr}}
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .tier{border:1px solid var(--line);border-radius:18px;padding:28px 24px;background:var(--paper);position:relative;display:flex;flex-direction:column}
+  .tier.hot{background:var(--card);border:2px solid var(--teal);box-shadow:0 16px 40px -18px rgba(15,118,110,.35)}
+  .tier .flag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--gold);color:#fff;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 16px;border-radius:999px;white-space:nowrap}
+  .tier h4{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+  .tier .price{font-size:38px;font-weight:800;letter-spacing:-.03em;margin-bottom:4px}
+  .tier .price small{font-size:14px;font-weight:500;color:var(--muted)}
+  .tier .eta{font-size:13px;color:var(--muted);margin-bottom:18px}
+  .tier ul{list-style:none;margin-bottom:24px;flex:1}
+  .tier li{font-size:14px;padding:6px 0 6px 26px;position:relative;color:var(--ink)}
+  .tier li::before{content:"✓";position:absolute;left:2px;color:var(--teal);font-weight:700}
+  .tier a{align-self:stretch;text-align:center;background:var(--paper);border:1.5px solid var(--line);color:var(--ink);font-weight:600;font-size:14.5px;padding:12px;border-radius:12px;text-decoration:none;transition:all .15s}
+  .tier a:hover{border-color:var(--teal);color:var(--teal-dark)}
+  .tier.hot a{background:var(--teal);border-color:var(--teal);color:#fff}
+  .tier.hot a:hover{background:var(--teal-dark)}
+  @media(max-width:760px){.tiers{grid-template-columns:1fr}.tier .flag{top:-13px}}
+
+  /* work */
+  .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .work{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);text-decoration:none;color:var(--ink);transition:transform .15s,box-shadow .15s;display:block}
+  .work:hover{transform:translateY(-4px)}
+  .work .thumb{height:150px;display:flex;align-items:center;justify-content:center;font-size:40px;color:#fff}
+  .work:nth-child(1) .thumb{background:linear-gradient(135deg,#2B6CB0,#1A456F)}
+  .work:nth-child(2) .thumb{background:linear-gradient(135deg,#4C9A5B,#2F6B3E)}
+  .work:nth-child(3) .thumb{background:linear-gradient(135deg,#8B5CF6,#5B3BA8)}
+  .work .info{padding:22px}
+  .work h3{font-size:17px;font-weight:700;margin-bottom:6px}
+  .work p{font-size:14px;color:var(--muted);margin-bottom:12px}
+  .work .go{font-size:14px;font-weight:600;color:var(--teal)}
+  @media(max-width:760px){.work-grid{grid-template-columns:1fr}}
+
+  /* process */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;list-style:none;counter-reset:step}
+  .steps li{counter-increment:step;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px 26px;box-shadow:var(--shadow)}
+  .steps li::before{content:"0" counter(step);display:block;font-size:13px;font-weight:800;letter-spacing:.1em;color:var(--teal);margin-bottom:14px}
+  .steps h3{font-size:17px;font-weight:700;margin-bottom:8px}
+  .steps p{font-size:14.5px;color:var(--muted)}
+  @media(max-width:760px){.steps{grid-template-columns:1fr}}
+
+  /* about */
+  .about-card{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:48px;display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center}
+  .avatar{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,var(--teal),#0A4F4A);display:flex;align-items:center;justify-content:center;color:#fff;font-size:44px;font-weight:800;flex-shrink:0}
+  .about-card p{color:var(--muted);font-size:15.5px;margin-bottom:12px}
+  .about-card p:last-child{margin-bottom:0}
+  .about-card p strong{color:var(--ink)}
+  @media(max-width:640px){.about-card{grid-template-columns:1fr;text-align:center}.avatar{margin:0 auto}}
+
+  /* faq */
+  .faq{max-width:760px}
+  details{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-bottom:12px;box-shadow:var(--shadow);overflow:hidden}
+  summary{cursor:pointer;padding:20px 24px;font-weight:600;font-size:15.5px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:22px;color:var(--teal);font-weight:400;flex-shrink:0;transition:transform .2s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{padding:0 24px 22px;font-size:14.5px;color:var(--muted)}
+
+  /* contact */
+  .contact-panel{background:linear-gradient(135deg,#0C5F59,#0F766E);border-radius:28px;padding:72px 40px;text-align:center;color:#fff;position:relative;overflow:hidden}
+  .contact-panel::before{content:"";position:absolute;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,.08);top:-160px;right:-120px}
+  .contact-panel h2{color:#fff;margin-bottom:14px}
+  .contact-panel p{color:rgba(255,255,255,.82);max-width:52ch;margin:0 auto 32px;font-size:16px}
+  .contact-panel .btn{background:#fff;color:var(--teal-dark)}
+  .contact-panel .btn:hover{background:var(--teal-soft)}
+  .contact-note{margin-top:20px;font-size:13.5px;color:rgba(255,255,255,.65)}
+
+  footer{padding:40px 0 56px;text-align:center;font-size:13.5px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">cristobal<b>.</b>builds</a>
+    <div class="links">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="#faq">FAQ</a>
+      <a class="nav-cta" href="#contact">Get a quote</a>
+    </div>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="blob a"></div><div class="blob b"></div>
+  <div class="wrap">
+    <div class="eyebrow">Websites & web apps for small businesses</div>
+    <h1>A website that <span>works as hard</span> as you do.</h1>
+    <p class="lede">I design and build custom websites, interactive tools, and mobile apps for small businesses and creators. No templates, no month-long agency timelines, no jargon — just something beautiful that brings you customers, delivered in days.</p>
+    <div class="cta-row">
+      <a class="btn solid" href="#services">See services & pricing</a>
+      <a class="btn ghost" href="#work">View my work</a>
+    </div>
+    <div class="assurances">
+      <div><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#0F766E" stroke-width="2"/><path d="M6.5 10.5l2.5 2.5 4.5-5" stroke="#0F766E" stroke-width="2" stroke-linecap="round"/></svg>Fixed pricing, no surprises</div>
+      <div><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#0F766E" stroke-width="2"/><path d="M6.5 10.5l2.5 2.5 4.5-5" stroke="#0F766E" stroke-width="2" stroke-linecap="round"/></svg>You own 100% of the code</div>
+      <div><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#0F766E" stroke-width="2"/><path d="M6.5 10.5l2.5 2.5 4.5-5" stroke="#0F766E" stroke-width="2" stroke-linecap="round"/></svg>Delivered in days, not months</div>
+    </div>
+
+    <div class="mock">
+      <div class="mock-bar"><i></i><i></i><i></i><div class="mock-url">yourbusiness.com</div></div>
+      <div class="mock-body">
+        <div>
+          <h4>Your business, <span>beautifully</span> online.</h4>
+          <p>Every site is designed around your brand and your customers — and looks perfect on phones, where most of your visitors arrive.</p>
+          <span class="mock-btn">Book now</span>
+        </div>
+        <div class="mock-cards">
+          <div><b>Services</b>What you offer, clearly laid out</div>
+          <div><b>Reviews</b>Your happy customers, front and center</div>
+          <div><b>Contact</b>One tap to reach you</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+<section id="services">
+  <div class="kicker">Services</div>
+  <h2>Three ways we can work together</h2>
+  <p class="sub">Simple, fixed-price offers. Pick the one that fits, or message me and I'll point you to the right one honestly.</p>
+
+  <div class="svc">
+    <div class="svc-top">
+      <div>
+        <h3>Single-page business website</h3>
+        <p>A clean, professional one-page site: your story, your services, your reviews, and an easy way to contact you — all on one smooth page that looks great on phones. Perfect if your current site (or lack of one) is costing you customers.</p>
+      </div>
+      <ol class="flow">
+        <li>You share your text, logo, and photos — no copy ready? I'll help draft it.</li>
+        <li>I design and build the page, then personally review every detail.</li>
+        <li>You preview it live, request revisions, and it's yours.</li>
+      </ol>
+    </div>
+    <div class="tiers">
+      <div class="tier"><h4>Starter</h4><div class="price">$35</div><div class="eta">5-day delivery · 1 revision</div>
+        <ul><li>Up to 4 sections</li><li>Mobile-friendly design</li><li>Basic Google setup</li></ul>
+        <a href="#contact">Choose Starter</a></div>
+      <div class="tier hot"><span class="flag">Most popular</span><h4>Business</h4><div class="price">$80</div><div class="eta">4-day delivery · 2 revisions</div>
+        <ul><li>Up to 7 sections</li><li>Contact form</li><li>Matched to your branding</li><li>Mobile-friendly design</li></ul>
+        <a href="#contact">Choose Business</a></div>
+      <div class="tier"><h4>Premium</h4><div class="price">$150</div><div class="eta">3-day delivery · 3 revisions</div>
+        <ul><li>Up to 10 sections</li><li>Contact form</li><li>Matched to your branding</li><li>Priority support</li></ul>
+        <a href="#contact">Choose Premium</a></div>
+    </div>
+  </div>
+
+  <div class="svc">
+    <div class="svc-top">
+      <div>
+        <h3>Custom web tool</h3>
+        <p>A price calculator, booking widget, quiz, or tracker built just for your business — on your site, working for you around the clock. Great for turning visitors into leads while you sleep.</p>
+      </div>
+      <ol class="flow">
+        <li>You describe what the tool should do. A rough idea is plenty.</li>
+        <li>I design and build it, then test every interaction myself.</li>
+        <li>You preview it live, request revisions, and get a plain-language guide to using it.</li>
+      </ol>
+    </div>
+    <div class="tiers">
+      <div class="tier"><h4>Starter</h4><div class="price">$50</div><div class="eta">5-day delivery · 1 revision</div>
+        <ul><li>1 core feature</li><li>Works on all devices</li></ul>
+        <a href="#contact">Choose Starter</a></div>
+      <div class="tier hot"><span class="flag">Most popular</span><h4>Business</h4><div class="price">$120</div><div class="eta">5-day delivery · 2 revisions</div>
+        <ul><li>Up to 3 features</li><li>Remembers visitor inputs</li><li>Works on all devices</li></ul>
+        <a href="#contact">Choose Business</a></div>
+      <div class="tier"><h4>Premium</h4><div class="price">$250</div><div class="eta">7-day delivery · 3 revisions</div>
+        <ul><li>Up to 5 features</li><li>Remembers visitor inputs</li><li>Advanced interactions</li></ul>
+        <a href="#contact">Choose Premium</a></div>
+    </div>
+  </div>
+
+  <div class="svc">
+    <div class="svc-top">
+      <div>
+        <h3>Mobile app from your website</h3>
+        <p>Already have a web app your customers love? I turn it into a real installable mobile app, ready for the App Store and Google Play. I'm doing this right now with my own app, so this is a live process, not theory.</p>
+      </div>
+      <ol class="flow">
+        <li>You share your web app — files or a link.</li>
+        <li>I convert it, design your app icon, and test the build.</li>
+        <li>You get everything ready for store submission, with my guidance.</li>
+      </ol>
+    </div>
+    <div class="tiers">
+      <div class="tier"><h4>Starter</h4><div class="price">$60</div><div class="eta">5-day delivery · 1 revision</div>
+        <ul><li>App conversion</li><li>Basic icon & splash screen</li></ul>
+        <a href="#contact">Choose Starter</a></div>
+      <div class="tier hot"><span class="flag">Most popular</span><h4>Business</h4><div class="price">$140</div><div class="eta">5-day delivery · 2 revisions</div>
+        <ul><li>App conversion</li><li>Custom icon & splash screen</li><li>Mobile polish fixes</li></ul>
+        <a href="#contact">Choose Business</a></div>
+      <div class="tier"><h4>Premium</h4><div class="price">$280</div><div class="eta">7-day delivery · 3 revisions</div>
+        <ul><li>Everything in Business</li><li>Full submission walkthrough</li></ul>
+        <a href="#contact">Choose Premium</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="kicker">Portfolio</div>
+  <h2>Things I've built</h2>
+  <p class="sub">Real projects, designed and built by me. Click through and try them.</p>
+  <div class="work-grid">
+    <a class="work" href="https://dalecri.github.io/Lamplight/" target="_blank" rel="noopener">
+      <div class="thumb">◈</div>
+      <div class="info"><h3>Lamplight</h3><p>A mobile-style app, now being prepared for the App Store.</p><span class="go">View live →</span></div>
+    </a>
+    <a class="work" href="https://dalecri.github.io/Office-Kanban-Board/" target="_blank" rel="noopener">
+      <div class="thumb">▤</div>
+      <div class="info"><h3>Office Kanban Board</h3><p>A complete task-management web app, designed and built end to end.</p><span class="go">View live →</span></div>
+    </a>
+    <a class="work" href="https://dalecri.github.io/Twostorycaptions/" target="_blank" rel="noopener">
+      <div class="thumb">✎</div>
+      <div class="info"><h3>TwoStoryCaptions</h3><p>A content-planning tool with AI-assisted captions.</p><span class="go">View live →</span></div>
+    </a>
+  </div>
+</section>
+
+<section id="process">
+  <div class="kicker">Process</div>
+  <h2>Easy from start to finish</h2>
+  <p class="sub">No tech jargon, no disappearing for weeks. You'll always know what's happening.</p>
+  <ol class="steps">
+    <li><h3>Tell me about it</h3><p>Describe your project in your own words — a rough idea or a detailed brief both work.</p></li>
+    <li><h3>I design & build</h3><p>I design the look and feel, build it with modern tools, and test everything myself.</p></li>
+    <li><h3>You approve & own it</h3><p>Preview it live, request revisions, and the finished product is 100% yours.</p></li>
+  </ol>
+</section>
+
+<section id="about">
+  <div class="kicker">About</div>
+  <h2>Hi, I'm Cristobal</h2>
+  <p class="sub">The designer, builder, and person you'll actually talk to.</p>
+  <div class="about-card">
+    <div class="avatar">C</div>
+    <div>
+      <p>I'm a front-end builder with a <strong>diploma in Mobile Application Design and Development</strong> and a background in professional communications — so the things I make don't just work, they're clear and easy for your customers to use.</p>
+      <p>I build with an <strong>AI-accelerated workflow</strong>: I design every experience myself, direct the build with modern tools, and personally test the result. That's how I deliver custom work in days at prices small businesses can afford.</p>
+      <p>Based in the Laurentians, Quebec · working with clients everywhere · fluent in English and Spanish.</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="kicker">FAQ</div>
+  <h2>Questions, answered</h2>
+  <p class="sub">The things people usually ask before starting.</p>
+  <div class="faq">
+    <details><summary>How fast is "fast," really?</summary><p>Most single-page sites are delivered in 3–5 days; tools and app conversions in 5–7. The timelines on each package are commitments, not estimates — if I can't hit it, I'll tell you before you pay anything.</p></details>
+    <details><summary>What do you need from me to start?</summary><p>Your text, logo, and any photos you want included. Don't have copy ready? I can help draft it — my background is in communications, so words are part of the service.</p></details>
+    <details><summary>Do I own the finished website?</summary><p>Completely. You receive all the files and you own 100% of the code. No lock-in, no monthly fees to me, no holding your site hostage.</p></details>
+    <details><summary>What does "AI-accelerated" mean for my project?</summary><p>It means I design the experience and direct the build using modern AI tools, then personally test every detail before delivery. You get custom work faster and more affordably — with a human reviewing everything.</p></details>
+    <details><summary>What if I need changes after delivery?</summary><p>Each package includes revisions during the build. After delivery, small tweaks are always a quick message away — I'll quote them fairly.</p></details>
+    <details><summary>Can you work with my existing branding?</summary><p>Yes — send me your logo, colors, and fonts and I'll match them. No branding yet? I can propose a simple, clean look as part of the build.</p></details>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-panel">
+    <h2>Let's build something for your business.</h2>
+    <p>Tell me what you're dreaming of — even if it's just a rough idea. I'll reply honestly about whether it's a fit, what it would take, and what it would cost. No pressure, no sales pitch.</p>
+    <a class="btn" href="mailto:crisdalessio@gmail.com?subject=Project%20inquiry">Get in touch</a>
+    <div class="contact-note">I usually reply within one business day.</div>
+  </div>
+</section>
+</div>
+
+<footer>
+  <div class="wrap">© 2026 Cristobal · Websites, web tools & mobile apps for small businesses</div>
+</footer>
+
+</body>
+</html>
