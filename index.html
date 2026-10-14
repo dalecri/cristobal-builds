@@ -125,7 +125,7 @@
 
   /* about */
   .about-card{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:48px;display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center}
-  .avatar{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,var(--teal),#0A4F4A);display:flex;align-items:center;justify-content:center;color:#fff;font-size:44px;font-weight:800;flex-shrink:0}
+  .avatar{width:120px;height:120px;border-radius:50%;object-fit:cover;flex-shrink:0}
   .about-card p{color:var(--muted);font-size:15.5px;margin-bottom:12px}
   .about-card p:last-child{margin-bottom:0}
   .about-card p strong{color:var(--ink)}
@@ -350,7 +350,7 @@
   <h2>Hi, I'm Cristobal</h2>
   <p class="sub">The designer, builder, and person you'll actually talk to.</p>
   <div class="about-card">
-    <div class="avatar">C</div>
+    <img class="avatar" src="assets/cristobal-photo.svg" alt="Cristobal" width="120" height="120" loading="lazy">
     <div>
       <p>I'm a front-end builder with a <strong>diploma in Mobile Application Design and Development</strong> and a background in professional communications. Beyond the basic expected functions of an app, my creations are made to be clear and easy for non-technical folks to use.</p>
       <p>I build with an <strong>AI-accelerated workflow</strong>: I design every experience myself, direct the build with modern tools, and personally test the result.</p>
