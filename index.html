@@ -103,13 +103,11 @@
   @media(max-width:760px){.tiers{grid-template-columns:1fr}.tier .flag{top:-13px}}
 
   /* work */
-  .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .work-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
   .work{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);text-decoration:none;color:var(--ink);transition:transform .15s,box-shadow .15s;display:block}
   .work:hover{transform:translateY(-4px)}
-  .work .thumb{height:150px;display:flex;align-items:center;justify-content:center;font-size:40px;color:#fff}
-  .work:nth-child(1) .thumb{background:linear-gradient(135deg,#2B6CB0,#1A456F)}
-  .work:nth-child(2) .thumb{background:linear-gradient(135deg,#4C9A5B,#2F6B3E)}
-  .work:nth-child(3) .thumb{background:linear-gradient(135deg,#8B5CF6,#5B3BA8)}
+  .work .thumb{height:160px;display:block;overflow:hidden;background:#12202a}
+  .work .thumb img,.work .thumb svg{width:100%;height:100%;display:block;object-fit:cover}
   .work .info{padding:22px}
   .work h3{font-size:17px;font-weight:700;margin-bottom:6px}
   .work p{font-size:14px;color:var(--muted);margin-bottom:12px}
@@ -287,19 +285,68 @@
 <section id="work">
   <div class="kicker">Portfolio</div>
   <h2>Things I've built</h2>
-  <p class="sub">Real projects, designed and built by me. Click through and try them.</p>
+  <p class="sub">A few things I've made. Explore the live apps or their source.</p>
   <div class="work-grid">
     <a class="work" href="https://dalecri.github.io/Lamplight/" target="_blank" rel="noopener">
-      <div class="thumb">◈</div>
-      <div class="info"><h3>Lamplight</h3><p>A mobile-style app, now being prepared for the App Store.</p><span class="go">View live →</span></div>
+      <div class="thumb"><img src="https://raw.githubusercontent.com/dalecri/Lamplight/main/lamplightlogo.png" alt="Lamplight app logo" loading="lazy"></div>
+      <div class="info"><h3>Lamplight</h3><p>A calm reading app with a focused, mobile-friendly design.</p><span class="go">View live →</span></div>
     </a>
     <a class="work" href="https://dalecri.github.io/Office-Kanban-Board/" target="_blank" rel="noopener">
-      <div class="thumb">▤</div>
-      <div class="info"><h3>Office Kanban Board</h3><p>A complete task-management web app, designed and built end to end.</p><span class="go">View live →</span></div>
+      <div class="thumb">
+        <svg viewBox="0 0 800 320" role="img" aria-label="Illustrated top-down office with desks, meeting room, and plants" preserveAspectRatio="xMidYMid slice">
+          <defs><linearGradient id="officeBg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#29233e"/><stop offset="1" stop-color="#101722"/></linearGradient></defs>
+          <rect width="800" height="320" fill="url(#officeBg)"/>
+          <path d="M0 110H800M0 220H800M260 0V320M525 0V320" stroke="#8794ae" stroke-opacity=".28" stroke-width="8"/>
+          <rect x="28" y="24" width="202" height="68" rx="12" fill="#3f3b58"/><rect x="44" y="40" width="78" height="36" rx="6" fill="#8b7cc0"/><rect x="134" y="40" width="78" height="36" rx="6" fill="#657c9d"/>
+          <rect x="290" y="24" width="205" height="68" rx="12" fill="#244b4a"/><rect x="310" y="38" width="70" height="42" rx="5" fill="#8cc5a0"/><rect x="392" y="38" width="82" height="42" rx="5" fill="#4a8b79"/>
+          <rect x="555" y="24" width="214" height="68" rx="12" fill="#53433e"/><rect x="578" y="40" width="88" height="36" rx="6" fill="#d8ad79"/><circle cx="723" cy="57" r="17" fill="#86a77d"/>
+          <rect x="28" y="135" width="202" height="66" rx="12" fill="#354d5c"/><rect x="48" y="150" width="68" height="36" rx="5" fill="#d1a970"/><rect x="132" y="150" width="74" height="36" rx="5" fill="#6a9eae"/>
+          <rect x="290" y="135" width="205" height="66" rx="12" fill="#4a3c58"/><rect x="315" y="149" width="150" height="38" rx="6" fill="#927cae"/><circle cx="473" cy="168" r="8" fill="#f3ce8b"/>
+          <rect x="555" y="135" width="214" height="66" rx="12" fill="#305347"/><rect x="576" y="150" width="80" height="35" rx="6" fill="#c2a874"/><rect x="666" y="150" width="80" height="35" rx="6" fill="#719782"/>
+          <rect x="28" y="245" width="202" height="52" rx="12" fill="#3d3449"/><rect x="47" y="254" width="164" height="33" rx="5" fill="#a58ab7"/>
+          <rect x="290" y="245" width="205" height="52" rx="12" fill="#554137"/><rect x="312" y="253" width="162" height="36" rx="6" fill="#bd855c"/>
+          <rect x="555" y="245" width="214" height="52" rx="12" fill="#343e50"/><circle cx="590" cy="270" r="13" fill="#9ab17e"/><rect x="618" y="256" width="128" height="28" rx="6" fill="#70819c"/>
+        </svg>
+      </div>
+      <div class="info"><h3>Office Kanban Board</h3><p>A pixel-art office and task board for organizing work.</p><span class="go">View live →</span></div>
     </a>
     <a class="work" href="https://dalecri.github.io/Twostorycaptions/" target="_blank" rel="noopener">
-      <div class="thumb">✎</div>
+      <div class="thumb"><img src="https://raw.githubusercontent.com/dalecri/Twostorycaptions/main/tst.png" alt="TwoStoryCaptions project preview" loading="lazy"></div>
       <div class="info"><h3>TwoStoryCaptions</h3><p>A content-planning tool with AI-assisted captions.</p><span class="go">View live →</span></div>
+    </a>
+    <a class="work" href="https://dalecri.github.io/voxel-worlds/" target="_blank" rel="noopener">
+      <div class="thumb"><img src="https://raw.githubusercontent.com/dalecri/voxel-worlds/main/docs/valley.png" alt="Voxel Worlds: an isometric landscape with a waterfall" loading="lazy"></div>
+      <div class="info"><h3>Voxel Worlds</h3><p>Build and explore voxel landscapes with flowing water, lava, weather, and wildlife.</p><span class="go">Play live →</span></div>
+    </a>
+    <a class="work" href="https://github.com/dalecri/pomodoro-terrarium" target="_blank" rel="noopener">
+      <div class="thumb"><img src="https://raw.githubusercontent.com/dalecri/pomodoro-terrarium/main/assets/logo-icon.png" alt="Pomodoro Terrarium app artwork" loading="lazy"></div>
+      <div class="info"><h3>Pomodoro Terrarium</h3><p>A focus timer where a living voxel garden grows as you work.</p><span class="go">View on GitHub →</span></div>
+    </a>
+    <a class="work" href="https://dalecri.github.io/Voxel-lofi-room/" target="_blank" rel="noopener">
+      <div class="thumb"><img src="https://raw.githubusercontent.com/dalecri/Voxel-lofi-room/main/docs/study.png" alt="Lofi Rooms: a cozy isometric voxel study" loading="lazy"></div>
+      <div class="info"><h3>Lofi Rooms</h3><p>Build cozy voxel rooms, add details, and set the mood with light and sound.</p><span class="go">Explore live →</span></div>
+    </a>
+    <a class="work" href="https://github.com/dalecri/typing-speed-terrarium" target="_blank" rel="noopener">
+      <div class="thumb">
+        <svg viewBox="0 0 800 320" role="img" aria-label="Typing Speed Terrarium preview with a glowing voxel garden and typing prompt" preserveAspectRatio="xMidYMid slice">
+          <defs><linearGradient id="typeSky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#171a3e"/><stop offset="1" stop-color="#563f56"/></linearGradient><linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#74a28b" stop-opacity=".35"/><stop offset="1" stop-color="#18273d" stop-opacity=".78"/></linearGradient></defs>
+          <rect width="800" height="320" fill="url(#typeSky)"/>
+          <circle cx="102" cy="58" r="2" fill="#ffe1a2"/><circle cx="169" cy="104" r="2" fill="#c9d5ff"/><circle cx="654" cy="54" r="2" fill="#ffe1a2"/><circle cx="728" cy="112" r="2" fill="#c9d5ff"/>
+          <text x="400" y="48" text-anchor="middle" fill="#e8e8f4" font-size="15" letter-spacing="4" font-family="Arial,sans-serif">TYPING SPEED TERRARIUM</text>
+          <g transform="translate(250 82)">
+            <path d="M28 129 146 62l126 67-126 70z" fill="#47634d"/><path d="M28 129v28l118 68v-36z" fill="#324a43"/><path d="M272 129v28l-126 68v-36z" fill="#283d3c"/>
+            <path d="m88 93 58-33 61 33-61 34z" fill="#6d8b5f"/><path d="M88 93v20l58 34v-20z" fill="#485f49"/><path d="M207 93v20l-61 34v-20z" fill="#3c5145"/>
+            <rect x="135" y="39" width="16" height="50" fill="#795542"/><rect x="119" y="26" width="18" height="20" fill="#7eab70"/><rect x="138" y="14" width="22" height="28" fill="#96bd75"/><rect x="158" y="26" width="18" height="20" fill="#739b65"/>
+            <rect x="184" y="72" width="12" height="31" fill="#88604c"/><rect x="170" y="58" width="18" height="20" fill="#6d9a69"/><rect x="188" y="48" width="21" height="24" fill="#90b878"/><rect x="209" y="60" width="16" height="18" fill="#6e9d72"/>
+            <rect x="66" y="105" width="10" height="25" fill="#87614a"/><rect x="53" y="92" width="18" height="17" fill="#6c9d6f"/><rect x="72" y="82" width="20" height="20" fill="#87b476"/>
+          </g>
+          <rect x="115" y="246" width="570" height="48" rx="12" fill="url(#glass)" stroke="#dbe0ff" stroke-opacity=".25"/>
+          <text x="145" y="276" fill="#abb1c9" font-size="16" font-family="monospace">the garden grows with every word you type</text>
+          <rect x="658" y="259" width="2" height="22" fill="#f7c86b"/>
+          <text x="400" y="225" text-anchor="middle" fill="#d4d9e9" font-size="13" letter-spacing="2" font-family="Arial,sans-serif">FOCUS · TYPE · GROW</text>
+        </svg>
+      </div>
+      <div class="info"><h3>Typing Speed Terrarium</h3><p>A typing game where correct words grow a quiet voxel garden.</p><span class="go">View on GitHub →</span></div>
     </a>
   </div>
 </section>
@@ -347,7 +394,7 @@
   <div class="contact-panel">
     <h2>Let's build something for your business.</h2>
     <p>Tell me what you're dreaming of, even if it's just a rough idea. I'll reply honestly about whether it's a fit, what it would take, and what it would cost. No pressure, no sales pitch.</p>
-    <a class="btn" href="mailto:crisdalessio@gmail.com?subject=Project%20inquiry">Get in touch</a>
+    <a class="btn" href="mailto:workwithcristobal@gmail.com?subject=Project%20inquiry">Get in touch</a>
     <div class="contact-note">I usually reply within one business day.</div>
   </div>
 </section>
