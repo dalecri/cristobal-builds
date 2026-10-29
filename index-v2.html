@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cristobal Builds — Websites, Web Tools & Mobile Apps</title>
+<meta name="description" content="Websites, web tools, and mobile apps for small businesses. Fixed prices, delivered in days, you own 100% of the code.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  @font-face{font-family:"Alpha Lyrae";src:url("https://heycristobal.com/vault/assets/fonts/AlphaLyrae-Medium.woff2") format("woff2"),url("https://heycristobal.com/vault/assets/fonts/AlphaLyrae-Medium.woff") format("woff");font-weight:400 700;font-display:swap}
+  :root{
+    --bg:#0b0d10; --surface:#111418; --surface2:#161a20;
+    --line:#23282f; --line-soft:#1a1e24;
+    --text:#e9ebee; --muted:#8b929c; --faint:#5b626c;
+    --amber:#f0a832; --amber-dim:rgba(240,168,50,.12);
+    --green:#7dd87d;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+    --disp:'Archivo',system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:var(--disp); line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    background-image:
+      linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
+    background-size:48px 48px;
+  }
+  ::selection{background:var(--amber);color:#0b0d10}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  .mono{font-family:var(--mono)}
+
+  /* top bar */
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(11,13,16,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+  .brand{font-family:var(--mono);font-weight:600;font-size:14px;letter-spacing:.04em;text-decoration:none;color:var(--text)}
+  .brand b{color:var(--amber)}
+  .topnav{display:flex;gap:24px;align-items:center}
+  .topnav a{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--muted);text-decoration:none;text-transform:uppercase}
+  .topnav a:hover{color:var(--text)}
+  .status{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--green);text-transform:uppercase}
+  .status i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:pulse 2s infinite}
+  @keyframes pulse{50%{opacity:.4}}
+  @media(max-width:760px){.topnav a{display:none}.topnav .status{display:flex}}
+
+  /* hero */
+  header{padding:110px 0 70px;position:relative}
+  .no{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--amber);margin-bottom:22px}
+  h1{font-size:clamp(42px,7vw,84px);font-weight:900;letter-spacing:-.03em;line-height:1.02;margin-bottom:24px;max-width:14ch}
+  h1 .dim{color:var(--faint)}
+  .lede{font-size:18px;color:var(--muted);max-width:58ch;margin-bottom:40px}
+  .lede strong{color:var(--text);font-weight:600}
+  .specstrip{display:flex;flex-wrap:wrap;gap:10px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:44px}
+  .specstrip span{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;padding:0 18px;position:relative}
+  .specstrip span:first-child{padding-left:0}
+  .specstrip span+span::before{content:"◆";position:absolute;left:-4px;color:var(--amber);font-size:9px;top:3px}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:15px 30px;border-radius:4px;transition:transform .15s,background .15s;display:inline-block}
+  .btn:hover{transform:translateY(-2px)}
+  .btn.solid{background:var(--amber);color:#0b0d10}
+  .btn.solid:hover{background:#ffbe55}
+  .btn.line{border:1px solid var(--line);color:var(--text);background:transparent}
+  .btn.line:hover{border-color:var(--amber);color:var(--amber)}
+
+  /* index jump */
+  .indexnav{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-bottom:20px}
+  .indexnav a{padding:20px 22px;text-decoration:none;color:var(--text);border-left:1px solid var(--line);transition:background .15s}
+  .indexnav a:first-child{border-left:none}
+  .indexnav a:hover{background:var(--surface)}
+  .indexnav .n{font-family:var(--mono);font-size:11px;color:var(--amber);letter-spacing:.15em;display:block;margin-bottom:6px}
+  .indexnav .t{font-weight:700;font-size:16px;letter-spacing:-.01em;display:block}
+  .indexnav .s{font-family:var(--mono);font-size:11px;color:var(--faint);display:block;margin-top:4px}
+  @media(max-width:640px){.indexnav{grid-template-columns:1fr}.indexnav a{border-left:none;border-top:1px solid var(--line)}.indexnav a:first-child{border-top:none}}
+
+  /* catalog */
+  section{padding:84px 0}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--amber);text-transform:uppercase;margin-bottom:12px}
+  h2{font-size:clamp(30px,4.5vw,46px);font-weight:800;letter-spacing:-.025em;line-height:1.1;margin-bottom:14px}
+  .sub{color:var(--muted);font-size:16px;max-width:62ch;margin-bottom:48px}
+
+  .pack{border:1px solid var(--line);border-radius:8px;background:var(--surface);margin-bottom:36px;overflow:hidden}
+  .pack-head{padding:36px 36px 28px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:32px}
+  @media(max-width:760px){.pack-head{grid-template-columns:1fr}}
+  .pack-head .n{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--amber);margin-bottom:10px}
+  .pack-head h3{font-size:28px;font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
+  .pack-head p{color:var(--muted);font-size:15px;max-width:44ch}
+  .how{list-style:none;counter-reset:how}
+  .how li{counter-increment:how;font-family:var(--mono);font-size:13px;color:var(--muted);padding:10px 0 10px 40px;position:relative;border-top:1px dashed var(--line)}
+  .how li:first-child{border-top:none}
+  .how li::before{content:"0" counter(how);position:absolute;left:0;color:var(--amber);font-weight:600}
+  .tiers{border-top:1px solid var(--line)}
+  .tier{display:grid;grid-template-columns:130px 1fr auto;gap:20px;align-items:center;padding:22px 36px;border-top:1px solid var(--line-soft);transition:background .15s;text-decoration:none;color:var(--text)}
+  .tier:first-child{border-top:none}
+  .tier:hover{background:var(--surface2)}
+  .tier .tn{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text)}
+  .tier .tn small{display:block;color:var(--faint);font-weight:400;letter-spacing:.04em;margin-top:4px;text-transform:none;font-size:11px}
+  .tier .spec{font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.9}
+  .tier .spec b{color:var(--text);font-weight:500}
+  .tier .price{font-family:var(--mono);text-align:right}
+  .tier .price .amt{font-size:30px;font-weight:600;color:var(--amber);display:block;line-height:1}
+  .tier .price .go{font-size:11px;letter-spacing:.1em;color:var(--faint);text-transform:uppercase}
+  .tier:hover .price .go{color:var(--amber)}
+  .tier.hot{background:var(--amber-dim)}
+  .tier.hot:hover{background:rgba(240,168,50,.16)}
+  .tier .flag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:#0b0d10;background:var(--amber);padding:3px 10px;border-radius:3px;text-transform:uppercase;font-weight:600}
+  @media(max-width:640px){.tier{grid-template-columns:1fr;gap:8px}.tier .price{text-align:left;display:flex;align-items:baseline;gap:14px}}
+
+  /* work index */
+  .wtable{border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .wrow{display:grid;grid-template-columns:70px 1fr 1.2fr auto;gap:20px;align-items:center;padding:18px 28px;border-top:1px solid var(--line-soft);text-decoration:none;color:var(--text);transition:background .15s;background:var(--surface)}
+  .wrow:first-child{border-top:none}
+  .wrow:hover{background:var(--surface2)}
+  .wrow .n{font-family:var(--mono);font-size:12px;color:var(--amber)}
+  .wrow .t{font-weight:700;font-size:16px}
+  .wrow .d{font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .wrow .l{font-family:var(--mono);font-size:12px;color:var(--faint);letter-spacing:.06em;white-space:nowrap}
+  .wrow:hover .l{color:var(--amber)}
+  @media(max-width:640px){.wrow{grid-template-columns:44px 1fr auto}.wrow .d{display:none}}
+
+  /* process */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .step{background:var(--surface);padding:32px 28px}
+  .step .n{font-family:var(--mono);font-size:12px;color:var(--amber);letter-spacing:.15em;margin-bottom:12px}
+  .step h3{font-size:19px;font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
+  .step p{font-family:var(--mono);font-size:13px;color:var(--muted)}
+  @media(max-width:760px){.steps{grid-template-columns:1fr}}
+
+  /* about */
+  .about{display:grid;grid-template-columns:220px 1fr;gap:44px;align-items:start;border:1px solid var(--line);border-radius:8px;background:var(--surface);padding:44px}
+  @media(max-width:700px){.about{grid-template-columns:1fr}}
+  .about .who{font-family:var(--mono);font-size:12px;letter-spacing:.15em;color:var(--amber);margin-bottom:12px}
+  .about h3{font-size:26px;font-weight:800;letter-spacing:-.02em;margin-bottom:14px}
+  .about p{color:var(--muted);font-size:15px;margin-bottom:14px;max-width:60ch}
+  .about p strong{color:var(--text)}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .tags span{font-family:var(--mono);font-size:11px;letter-spacing:.06em;border:1px solid var(--line);border-radius:4px;padding:6px 12px;color:var(--muted)}
+
+  /* github activity */
+  .ghcard{border:1px solid var(--line);border-radius:8px;background:var(--surface);padding:28px}
+  .ghhead{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px}
+  .ghhead .who{color:var(--text)}
+  .ghhead .who b{color:var(--amber);font-weight:600}
+  .ghhead .tot{color:var(--muted)}
+  .ghhead .tot b{color:var(--text);font-weight:600}
+  .ghscroll{overflow-x:auto;padding-bottom:6px}
+  .ghmonths{display:grid;gap:3px;font-family:var(--mono);font-size:10px;color:var(--faint);margin-bottom:6px;min-height:14px}
+  .ghgrid{display:grid;grid-template-rows:repeat(7,11px);grid-auto-flow:column;gap:3px;width:max-content}
+  .ghcell{width:11px;height:11px;border-radius:2px;background:#1a1e24}
+  .ghcell.l1{background:rgba(240,168,50,.28)}
+  .ghcell.l2{background:rgba(240,168,50,.52)}
+  .ghcell.l3{background:rgba(240,168,50,.76)}
+  .ghcell.l4{background:var(--amber)}
+  .ghcell.pad{visibility:hidden}
+  .ghlegend{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:16px;font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.06em}
+  .ghlegend .scale{display:flex;align-items:center;gap:4px}
+  .ghlegend .scale i{width:11px;height:11px;border-radius:2px;display:block}
+  .ghlegend a{color:var(--muted);text-decoration:none;letter-spacing:.08em}
+  .ghlegend a:hover{color:var(--amber)}
+  .ghmsg{font-family:var(--mono);font-size:13px;color:var(--muted)}
+
+  /* tech stack marquee */
+  .lane{overflow:hidden;margin-bottom:12px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+  .lane-track{display:flex;width:max-content;animation:scrollx 38s linear infinite}
+  .lane.rev .lane-track{animation-direction:reverse;animation-duration:44s}
+  .lane:hover .lane-track{animation-play-state:paused}
+  @keyframes scrollx{to{transform:translateX(-50%)}}
+  .tool{font-weight:700;font-size:16px;letter-spacing:-.01em;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px 22px;margin-right:12px;white-space:nowrap;display:flex;align-items:center;gap:10px}
+  .tool::before{content:"◆";color:var(--amber);font-size:10px}
+  .pillb{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:10px 18px;margin-right:12px;white-space:nowrap}
+  @media (prefers-reduced-motion: reduce){.lane-track{animation:none}}
+
+  /* faq */
+  details{border:1px solid var(--line);border-radius:6px;background:var(--surface);margin-bottom:10px}
+  summary{cursor:pointer;padding:20px 24px;font-weight:600;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-family:var(--mono);color:var(--amber);font-size:20px;flex-shrink:0}
+  details[open] summary::after{content:"–"}
+  details p{padding:0 24px 22px;color:var(--muted);font-size:14.5px;max-width:70ch}
+
+  /* contact */
+  .contact-panel{border:1px solid var(--amber);border-radius:8px;background:linear-gradient(180deg,rgba(240,168,50,.08),transparent);padding:64px 48px;text-align:center}
+  .contact-panel h2{margin-bottom:16px}
+  .contact-panel p{color:var(--muted);max-width:52ch;margin:0 auto 32px;font-size:16px}
+  .contact-note{font-family:var(--mono);font-size:12px;color:var(--faint);margin-top:20px;letter-spacing:.06em}
+
+  footer{border-top:1px solid var(--line);padding:32px 0;margin-top:40px}
+  footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  footer p{font-family:var(--mono);font-size:12px;color:var(--faint);letter-spacing:.04em}
+
+  /* Living backgrounds: ASCII koi pond (hero) + Game of Life (work) */
+  header{overflow:hidden}
+  .pond-bg{position:absolute;inset:0;z-index:0;opacity:.55;pointer-events:none}
+  .pond-bg canvas{display:block}
+  header .wrap{position:relative;z-index:1}
+  #work{position:relative;overflow:hidden}
+  #lifeBg{position:absolute;inset:0;z-index:0;opacity:.5;pointer-events:none;width:100%;height:100%}
+  #work .wrap{position:relative;z-index:1}
+  h1{font-family:"Alpha Lyrae","Archivo",system-ui,sans-serif}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#">CRISTOBAL<b>.BUILDS</b></a>
+    <div class="topnav">
+      <a href="#catalog">Catalog</a>
+      <a href="#work">Work</a>
+      <a href="#faq">FAQ</a>
+      <span class="status"><i></i>Available</span>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="pond-bg" aria-hidden="true"><canvas id="pondCanvas"></canvas></div>
+  <div class="wrap">
+    <div class="no">// FREELANCE FRONT-END — LAURENTIANS, QC</div>
+    <h1>Websites, tools &amp; apps <span class="dim">for small businesses.</span></h1>
+    <p class="lede">You bring the business. I design and build the web part, test every detail myself, and hand you <strong>100% of the code</strong>. No jargon, no lock-in, no monthly fees to me.</p>
+    <div class="specstrip">
+      <span>Fixed prices</span><span>3–7 day delivery</span><span>You own the code</span><span>No subscriptions</span><span>Human-reviewed</span>
+    </div>
+    <div class="cta-row">
+      <a class="btn solid" href="#catalog">Browse the catalog</a>
+      <a class="btn line" href="#contact">Start a project</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="indexnav">
+    <a href="#svc-web"><span class="n">Nº01</span><span class="t">Business website</span><span class="s">FROM $35 · 3–5 DAYS</span></a>
+    <a href="#svc-tool"><span class="n">Nº02</span><span class="t">Custom web tool</span><span class="s">FROM $50 · 5–7 DAYS</span></a>
+    <a href="#svc-app"><span class="n">Nº03</span><span class="t">App conversion</span><span class="s">FROM $60 · 5–7 DAYS</span></a>
+  </div>
+</div>
+
+<section id="catalog">
+  <div class="wrap">
+    <div class="kicker">The catalog</div>
+    <h2>3 services. 9 packages. Every price on the table.</h2>
+    <p class="sub">Read the whole index before you pay anything. Timelines are commitments, not estimates. If I can't hit one, I'll tell you before you spend a cent.</p>
+
+    <div class="pack" id="svc-web">
+      <div class="pack-head">
+        <div>
+          <div class="n">Nº01 — WEBSITE</div>
+          <h3>Business website</h3>
+          <p>A complete website for your business. You bring the words, logo, and photos (or I help you draft them). I ship the site.</p>
+        </div>
+        <ol class="how">
+          <li>You share text, logo, photos</li>
+          <li>I design &amp; build, review every detail</li>
+          <li>You preview, revise, it's yours</li>
+        </ol>
+      </div>
+      <div class="tiers">
+        <a class="tier" href="#contact">
+          <div class="tn">Starter<small>Launch something simple</small></div>
+          <div class="spec"><b>4</b> sections ◆ <b>Mobile-ready</b> ◆ Basic Google setup<br><b>5-day</b> delivery ◆ <b>1</b> revision</div>
+          <div class="price"><span class="amt">$35</span><span class="go">Choose →</span></div>
+        </a>
+        <a class="tier hot" href="#contact">
+          <div class="tn">Business <span class="flag">Most popular</span><small>For real businesses</small></div>
+          <div class="spec"><b>7</b> sections ◆ <b>Contact form</b> ◆ Matched to your branding ◆ <b>Mobile-ready</b><br><b>4-day</b> delivery ◆ <b>2</b> revisions</div>
+          <div class="price"><span class="amt">$80</span><span class="go">Choose →</span></div>
+        </a>
+        <a class="tier" href="#contact">
+          <div class="tn">Premium<small>The full treatment</small></div>
+          <div class="spec"><b>10</b> sections ◆ <b>Contact form</b> ◆ Matched branding ◆ Priority support<br><b>3-day</b> delivery ◆ <b>3</b> revisions</div>
+          <div class="price"><span class="amt">$150</span><span class="go">Choose →</span></div>
+        </a>
+      </div>
+    </div>
+
+    <div class="pack" id="svc-tool">
+      <div class="pack-head">
+        <div>
+          <div class="n">Nº02 — WEB TOOL</div>
+          <h3>Custom web tool</h3>
+          <p>A price calculator, booking widget, quiz, or tracker built for your business. Works around the clock, turning visitors into leads while you sleep.</p>
+        </div>
+        <ol class="how">
+          <li>You describe what it should do</li>
+          <li>I design, build &amp; test every interaction</li>
+          <li>You preview + get a plain-language guide</li>
+        </ol>
+      </div>
+      <div class="tiers">
+        <a class="tier" href="#contact">
+          <div class="tn">Starter<small>One job, done well</small></div>
+          <div class="spec"><b>1</b> core feature ◆ Works on all devices<br><b>5-day</b> delivery ◆ <b>1</b> revision</div>
+          <div class="price"><span class="amt">$50</span><span class="go">Choose →</span></div>
+        </a>
+        <a class="tier hot" href="#contact">
+          <div class="tn">Business <span class="flag">Most popular</span><small>Remembers your visitors</small></div>
+          <div class="spec"><b>3</b> features ◆ <b>Remembers inputs</b> ◆ Works on all devices<br><b>5-day</b> delivery ◆ <b>2</b> revisions</div>
+          <div class="price"><span class="amt">$120</span><span class="go">Choose →</span></div>
+        </a>
+        <a class="tier" href="#contact">
+          <div class="tn">Premium<small>Advanced interactions</small></div>
+          <div class="spec"><b>5</b> features ◆ <b>Remembers inputs</b> ◆ Advanced interactions<br><b>7-day</b> delivery ◆ <b>3</b> revisions</div>
+          <div class="price"><span class="amt">$250</span><span class="go">Choose →</span></div>
+        </a>
+      </div>
+    </div>
+
+    <div class="pack" id="svc-app">
+      <div class="pack-head">
+        <div>
+          <div class="n">Nº03 — APP CONVERSION</div>
+          <h3>Mobile app from your website</h3>
+          <p>Have a web app your customers love? I convert it into a real installable mobile app, ready for the App Store and Google Play.</p>
+        </div>
+        <ol class="how">
+          <li>You share your web app</li>
+          <li>I convert it, design icon, test the build</li>
+          <li>Store-ready files + my guidance</li>
+        </ol>
+      </div>
+      <div class="tiers">
+        <a class="tier" href="#contact">
+          <div class="tn">Starter<small>Just the conversion</small></div>
+          <div class="spec"><b>App conversion</b> ◆ Basic icon &amp; splash<br><b>5-day</b> delivery ◆ <b>1</b> revision</div>
+          <div class="price"><span class="amt">$60</span><span class="go">Choose →</span></div>
+        </a>
+        <a class="tier hot" href="#contact">
+          <div class="tn">Business <span class="flag">Most popular</span><small>Polished for mobile</small></div>
+          <div class="spec"><b>App conversion</b> ◆ <b>Custom icon &amp; splash</b> ◆ Mobile polish fixes<br><b>5-day</b> delivery ◆ <b>2</b> revisions</div>
+          <div class="price"><span class="amt">$140</span><span class="go">Choose →</span></div>
+        </a>
+        <a class="tier" href="#contact">
+          <div class="tn">Premium<small>Submission walkthrough</small></div>
+          <div class="spec"><b>Everything in Business</b> ◆ <b>Full submission walkthrough</b><br><b>7-day</b> delivery ◆ <b>3</b> revisions</div>
+          <div class="price"><span class="amt">$280</span><span class="go">Choose →</span></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work" style="padding-top:0">
+  <canvas id="lifeBg" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="kicker">Index</div>
+    <h2>Things I've built</h2>
+    <p class="sub">Live apps and their source. Proof of work, browsable before you commit.</p>
+    <div class="wtable">
+      <a class="wrow" href="https://dalecri.github.io/Lamplight/" target="_blank" rel="noopener"><span class="n">01</span><span class="t">Lamplight</span><span class="d">Calm reading app · web / mobile</span><span class="l">VIEW LIVE →</span></a>
+      <a class="wrow" href="https://dalecri.github.io/Voxel-lofi-room/" target="_blank" rel="noopener"><span class="n">02</span><span class="t">Lofi Rooms</span><span class="d">Cozy voxel room builder · web / mobile</span><span class="l">EXPLORE →</span></a>
+      <a class="wrow" href="https://dalecri.github.io/voxel-worlds/" target="_blank" rel="noopener"><span class="n">03</span><span class="t">Voxel Worlds</span><span class="d">Voxel landscapes · web / mobile</span><span class="l">PLAY →</span></a>
+      <a class="wrow" href="https://dalecri.github.io/pomodoro-terrarium/" target="_blank" rel="noopener"><span class="n">04</span><span class="t">Pomodoro Terrarium</span><span class="d">Focus timer, living garden · web / mobile</span><span class="l">VIEW LIVE →</span></a>
+      <a class="wrow" href="https://dalecri.github.io/Office-Kanban-Board/" target="_blank" rel="noopener"><span class="n">05</span><span class="t">Office Kanban</span><span class="d">Pixel-art task board · web</span><span class="l">VIEW LIVE →</span></a>
+      <a class="wrow" href="https://dalecri.github.io/Twostorycaptions/" target="_blank" rel="noopener"><span class="n">06</span><span class="t">TwoStoryTails</span><span class="d">AI caption planner · web / mobile</span><span class="l">VIEW LIVE →</span></a>
+      <a class="wrow" href="https://dalecri.github.io/typing-speed-terrarium/" target="_blank" rel="noopener"><span class="n">07</span><span class="t">Typing Terrarium</span><span class="d">Typing game, voxel garden · web</span><span class="l">VIEW LIVE →</span></a>
+      <a class="wrow" href="https://dalecri.github.io/game-of-life/" target="_blank" rel="noopener"><span class="n">08</span><span class="t">Game of Life</span><span class="d">Cozy pixel cellular automaton · web</span><span class="l">PLAY →</span></a>
+      <a class="wrow" href="https://dalecri.github.io/ascii-fish/" target="_blank" rel="noopener"><span class="n">09</span><span class="t">ASCII Koi Pond</span><span class="d">Procedural ASCII koi pond · web</span><span class="l">VIEW LIVE →</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="activity" style="padding-top:0">
+  <div class="wrap">
+    <div class="kicker">GitHub</div>
+    <h2>Contributions, last 12 months.</h2>
+    <div class="ghcard">
+      <div class="ghhead">
+        <span class="who">PUBLIC ACTIVITY</span>
+        <span class="tot" id="ghTotal"></span>
+      </div>
+      <div class="ghscroll">
+        <div class="ghmonths" id="ghMonths"></div>
+        <div class="ghgrid" id="ghGrid"><span class="ghmsg">Loading activity…</span></div>
+      </div>
+      <div class="ghlegend">
+        <span class="scale">LESS <i style="background:#1a1e24"></i><i style="background:rgba(240,168,50,.28)"></i><i style="background:rgba(240,168,50,.52)"></i><i style="background:rgba(240,168,50,.76)"></i><i style="background:#f0a832"></i> MORE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stack" style="padding-top:0">
+  <div class="wrap">
+    <div class="kicker">Tech stack</div>
+    <h2>The toolbox.</h2>
+  </div>
+  <div class="lane" aria-label="Core technologies">
+    <div class="lane-track" id="laneTools"></div>
+  </div>
+  <div class="lane rev" aria-label="Capabilities">
+    <div class="lane-track" id="laneCaps"></div>
+  </div>
+</section>
+
+<section id="process" style="padding-top:0">
+  <div class="wrap">
+    <div class="kicker">Process</div>
+    <h2>Three steps. No jargon.</h2>
+    <p class="sub">You always know what's happening and what comes next.</p>
+    <div class="steps">
+      <div class="step"><div class="n">STEP 01</div><h3>Tell me about it</h3><p>Rough idea or detailed brief. Your words, no technical translation needed.</p></div>
+      <div class="step"><div class="n">STEP 02</div><h3>I design &amp; build</h3><p>AI-accelerated workflow, human-reviewed. I test every detail myself.</p></div>
+      <div class="step"><div class="n">STEP 03</div><h3>You approve &amp; own it</h3><p>Preview live, request revisions. 100% of the code is yours.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="about" style="padding-top:0">
+  <div class="wrap">
+    <div class="about">
+      <div>
+        <div class="who">// OPERATOR</div>
+        <h3>Hi, I'm Cristobal</h3>
+        <div class="tags"><span>EN</span><span>ES</span><span>FR···</span></div>
+      </div>
+      <div>
+        <p>Front-end builder with a <strong>diploma in Mobile Application Design and Development</strong> and a background in professional communications. My work is built to be clear and easy for non-technical people to use.</p>
+        <p>I run an <strong>AI-accelerated workflow</strong>: I design every experience myself, direct the build with modern tools, and personally test the result before it reaches you.</p>
+        <p class="mono" style="font-size:13px;color:var(--faint)">BASE_ Laurentians, QC · CLIENTS_ everywhere · LANG_ English, Spanish</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:0">
+  <div class="wrap">
+    <div class="kicker">FAQ</div>
+    <h2>Questions, answered</h2>
+    <p class="sub">The things people usually ask before starting.</p>
+    <details><summary>How fast is "fast," really?</summary><p>Single-page sites: 3–5 days. Tools and app conversions: 5–7 days. Timelines are commitments, not estimates. If I can't hit one, I'll tell you before you pay anything.</p></details>
+    <details><summary>What do you need from me to start?</summary><p>Your text, logo, and photos. No copy ready? I help draft it — words are part of the service.</p></details>
+    <details><summary>Do I own the finished website?</summary><p>Completely. All files, 100% of the code. No lock-in, no monthly fees to me, no holding your site hostage.</p></details>
+    <details><summary>What does "AI-accelerated" mean?</summary><p>I design the experience and direct the build with modern AI tools, then personally test every detail. Custom work, faster and more affordable, with a human reviewing everything.</p></details>
+    <details><summary>What if I need changes after delivery?</summary><p>Revisions are included during the build. After delivery, small tweaks are a quick message away, quoted fairly.</p></details>
+    <details><summary>Can you match my existing branding?</summary><p>Yes. Send your logo, colors, and fonts. No branding yet? I'll propose a clean look as part of the build.</p></details>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:20px">
+  <div class="wrap">
+    <div class="contact-panel">
+      <div class="kicker" style="text-align:center">Contact</div>
+      <h2>Let's build something.</h2>
+      <p>Tell me what you're dreaming of, even if it's rough. I'll reply honestly about fit, effort, and cost. No pressure, no sales pitch.</p>
+      <a class="btn solid" href="mailto:workwithcristobal@gmail.com?subject=Project%20inquiry">Get in touch</a>
+      <div class="contact-note">USUALLY REPLIES WITHIN ONE BUSINESS DAY</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 CRISTOBAL.BUILDS</p>
+    <p>WEBSITES ◆ WEB TOOLS ◆ MOBILE APPS</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  /* tech stack marquee: build each lane, then clone it once for a seamless loop */
+  var TOOLS = ['HTML5','CSS3','JavaScript','Three.js','Tailwind CSS','Supabase','Firebase','Capacitor','Git','GitHub Pages'];
+  var CAPS  = ['Single-file web apps','Responsive design','UI/UX design','Progressive web apps','REST APIs','Offline-first storage','Voxel & 3D scenes','Icon & splash design','App Store prep','Bilingual EN / ES'];
+
+  function fillLane(id, items, cls){
+    var track = document.getElementById(id);
+    if (!track) return;
+    items.forEach(function(label){
+      var el = document.createElement('span');
+      el.className = cls;
+      el.textContent = label;
+      track.appendChild(el);
+    });
+    Array.prototype.slice.call(track.children).forEach(function(el){
+      var clone = el.cloneNode(true);
+      clone.setAttribute('aria-hidden','true');
+      track.appendChild(clone);
+    });
+  }
+  fillLane('laneTools', TOOLS, 'tool');
+  fillLane('laneCaps', CAPS, 'pillb');
+
+  /* github contribution graph, last 12 months */
+  var grid = document.getElementById('ghGrid');
+  var monthsEl = document.getElementById('ghMonths');
+  var totalEl = document.getElementById('ghTotal');
+  if (!grid) return;
+
+  function fail(){
+    grid.textContent = '';
+    var msg = document.createElement('span');
+    msg.className = 'ghmsg';
+    msg.textContent = 'Activity feed unavailable right now.';
+    grid.appendChild(msg);
+  }
+
+  fetch('https://github-contributions-api.jogruber.de/v4/dalecri?y=last')
+    .then(function(r){ if (!r.ok) throw new Error('bad response'); return r.json(); })
+    .then(function(data){
+      var days = (data && data.contributions) || [];
+      if (!days.length) { fail(); return; }
+
+      /* group days into week columns, rows = weekday (0 = Sunday) */
+      var weeks = [];
+      var cur = null;
+      days.forEach(function(d){
+        var dt = new Date(d.date + 'T00:00:00Z');
+        if (isNaN(dt)) return;
+        var wd = dt.getUTCDay();
+        if (!cur || wd === 0) { cur = [null,null,null,null,null,null,null]; weeks.push(cur); }
+        cur[wd] = { day: d, dt: dt };
+      });
+
+      grid.textContent = '';
+      var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      var lastMonth = -1;
+      weeks.forEach(function(week, wi){
+        var first = week.filter(Boolean)[0];
+        if (first) {
+          var m = first.dt.getUTCMonth();
+          if (m !== lastMonth) {
+            lastMonth = m;
+            var lab = document.createElement('span');
+            lab.textContent = MONTHS[m];
+            lab.style.gridColumn = (wi + 1) + ' / span 3';
+            monthsEl.appendChild(lab);
+          }
+        }
+        week.forEach(function(slot){
+          var cell = document.createElement('span');
+          if (!slot) { cell.className = 'ghcell pad'; }
+          else {
+            var lvl = Math.max(0, Math.min(4, parseInt(slot.day.level, 10) || 0));
+            var cnt = parseInt(slot.day.count, 10) || 0;
+            cell.className = 'ghcell' + (lvl ? ' l' + lvl : '');
+            cell.title = cnt + (cnt === 1 ? ' contribution' : ' contributions') + ' · ' +
+              MONTHS[slot.dt.getUTCMonth()] + ' ' + slot.dt.getUTCDate() + ', ' + slot.dt.getUTCFullYear();
+          }
+          grid.appendChild(cell);
+        });
+      });
+      monthsEl.style.gridTemplateColumns = 'repeat(' + weeks.length + ', 11px)';
+
+      var total = data.total && data.total.lastYear;
+      if (typeof total === 'number' && totalEl) {
+        var b = document.createElement('b');
+        b.textContent = total.toLocaleString('en-US');
+        totalEl.appendChild(b);
+        totalEl.appendChild(document.createTextNode(' contributions in the last year'));
+      }
+    })
+    .catch(fail);
+})();
+</script>
+<script>
+/* ASCII Koi Pond engine (from the ASCII Koi Pond project), sized to the hero.
+   Clicks on the hero ripple the pond and scatter the fish. */
+(function () {
+  'use strict';
+
+  // Global animation speed multiplier
+  let speedMultiplier = 0.8; // hero embed runs 20% slower than the standalone pond
+
+  // Check prefers-reduced-motion
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const canvas = document.getElementById('pondCanvas');
+  const ctx = canvas.getContext('2d', { alpha: false });
+
+  // Grid specifications
+  const FONT_NAME = '"Courier New", Courier, monospace';
+  const CELL_W = 12; // cell width in screen pixels
+  const CELL_H = 17; // cell height in screen pixels
+  const FONT_SIZE = 13;
+
+  let cols = 0;
+  let rows = 0;
+  let gridChars = [];
+  let gridColors = [];
+  let width = 0;
+  let height = 0;
+
+  // Water background sparse particles/glints
+  let waterBackground = [];
+
+  function initGrid() {
+    const host = canvas.parentElement;
+    width = host.clientWidth;
+    height = host.clientHeight;
+
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.scale(dpr, dpr);
+
+    cols = Math.ceil(width / CELL_W) + 1;
+    rows = Math.ceil(height / CELL_H) + 1;
+
+    const totalCells = cols * rows;
+    gridChars = new Array(totalCells);
+    gridColors = new Array(totalCells);
+
+    // Prepopulate sparse, atmospheric water texture
+    waterBackground = new Array(totalCells);
+    for (let i = 0; i < totalCells; i++) {
+      const rand = Math.random();
+      if (rand < 0.02) {
+        waterBackground[i] = {
+          char: '.',
+          color: 'rgba(28, 52, 75, 0.45)'
+        };
+      } else if (rand < 0.028) {
+        waterBackground[i] = {
+          char: '~',
+          color: 'rgba(20, 42, 64, 0.35)'
+        };
+      } else if (rand < 0.033) {
+        waterBackground[i] = {
+          char: '`',
+          color: 'rgba(16, 36, 56, 0.3)'
+        };
+      } else {
+        waterBackground[i] = null;
+      }
+    }
+  }
+
+  // --- Color Palette Definitions for Koi Varieties ---
+  // Kohaku (White & Red/Orange)
+  // Showa / Sanke (White, Scarlet, Ink Black)
+  // Ogon / Yamabuki (Golden Orange, Warm Cream)
+  // Karasugoi (Midnight Grey/Black with subtle silver accents)
+  const KOI_TYPES = [
+    {
+      name: 'Kohaku',
+      baseColor: [240, 238, 232], // Soft Ivory
+      patchColor: [225, 68, 22],  // Vermilion Orange-Red
+      accentColor: [255, 120, 40], // Bright Orange
+      hasBlack: false
+    },
+    {
+      name: 'Taisho Sanke',
+      baseColor: [242, 240, 238],
+      patchColor: [220, 50, 18],  // Deep Crimson
+      accentColor: [24, 26, 30],  // Sumi (Inky Black)
+      hasBlack: true
+    },
+    {
+      name: 'Showa Sanshoku',
+      baseColor: [32, 34, 40],    // Dark Sumi Base
+      patchColor: [228, 62, 20],  // Bold Vermilion
+      accentColor: [240, 235, 230], // White flashes
+      hasBlack: true
+    },
+    {
+      name: 'Yamabuki Ogon',
+      baseColor: [235, 175, 45],  // Golden Yellow
+      patchColor: [255, 210, 85], // Brilliant Gold
+      accentColor: [190, 110, 20], // Deep Bronze
+      hasBlack: false
+    },
+    {
+      name: 'Shiro Utsuri',
+      baseColor: [28, 30, 36],    // Black
+      patchColor: [245, 245, 242], // Pure White
+      accentColor: [80, 85, 95],  // Charcoal
+      hasBlack: true
+    },
+    {
+      name: 'Benigoi',
+      baseColor: [230, 60, 20],   // Solid Red-Orange
+      patchColor: [255, 95, 40],
+      accentColor: [255, 190, 150],
+      hasBlack: false
+    }
+  ];
+
+  // Procedural Koi Model
+  class KoiFish {
+    constructor(id) {
+      this.id = id;
+      this.type = KOI_TYPES[id % KOI_TYPES.length];
+
+      // Spine parameters
+      this.segmentCount = 20 + Math.floor(Math.random() * 8); // 20-27 segments
+      this.segSpacing = 7 + Math.random() * 3.5; // pixel distance between segments
+      this.bodyWidthScale = 1.0 + Math.random() * 0.45; // thickness variation
+      this.baseSwimSpeed = 1.1 + Math.random() * 0.9; // forward movement rate
+      this.swimSpeed = this.baseSwimSpeed;
+
+      // Head position and heading
+      this.x = Math.random() * (width || 800);
+      this.y = Math.random() * (height || 600);
+      this.heading = Math.random() * Math.PI * 2;
+      this.angularVelocity = 0;
+
+      // Undulation wave phase
+      this.wavePhase = Math.random() * Math.PI * 2;
+      this.baseWaveFrequency = 0.16 + Math.random() * 0.05;
+      this.waveFrequency = this.baseWaveFrequency;
+
+      // Chain of segments (x, y, angle)
+      this.segments = [];
+      for (let i = 0; i < this.segmentCount; i++) {
+        this.segments.push({
+          x: this.x - Math.cos(this.heading) * i * this.segSpacing,
+          y: this.y - Math.sin(this.heading) * i * this.segSpacing,
+          angle: this.heading
+        });
+      }
+
+      // Pre-generate procedural spot noise seeds along fish spine
+      this.patchSeeds = [];
+      for (let i = 0; i < this.segmentCount; i++) {
+        this.patchSeeds.push({
+          noise1: Math.sin(i * 0.72 + this.id * 3.1),
+          noise2: Math.cos(i * 1.15 + this.id * 5.7),
+          noise3: Math.sin(i * 2.3 + this.id * 1.8)
+        });
+      }
+    }
+
+    update() {
+      // 1. Steering & Smooth Wandering
+      // Gentle perlin-like wandering force scaled by speed multiplier
+      const wanderForce = (Math.sin(Date.now() * 0.0012 * speedMultiplier + this.id * 2.7) +
+                           Math.cos(Date.now() * 0.0006 * speedMultiplier + this.id * 1.3)) * 0.022 * Math.sqrt(speedMultiplier);
+
+      // Soft margin avoidance: smoothly turn away from viewport edges
+      const margin = 140;
+      let turnForce = 0;
+
+      if (this.x < margin) {
+        turnForce += Math.cos(this.heading) < 0 ? 0.045 : 0;
+        if (Math.sin(this.heading) > 0) turnForce -= 0.02; else turnForce += 0.02;
+      } else if (this.x > width - margin) {
+        turnForce += Math.cos(this.heading) > 0 ? 0.045 : 0;
+        if (Math.sin(this.heading) > 0) turnForce += 0.02; else turnForce -= 0.02;
+      }
+
+      if (this.y < margin) {
+        turnForce += Math.sin(this.heading) < 0 ? 0.045 : 0;
+        if (Math.cos(this.heading) > 0) turnForce += 0.02; else turnForce -= 0.02;
+      } else if (this.y > height - margin) {
+        turnForce += Math.sin(this.heading) > 0 ? 0.045 : 0;
+        if (Math.cos(this.heading) > 0) turnForce -= 0.02; else turnForce -= 0.02;
+      }
+
+      // Inertial angular velocity
+      this.angularVelocity = this.angularVelocity * 0.88 + (wanderForce + turnForce) * 0.12 * speedMultiplier;
+      this.heading += this.angularVelocity;
+
+      // Decay temporary burst speeds back to base speed
+      if (this.swimSpeed > this.baseSwimSpeed) {
+        this.swimSpeed += (this.baseSwimSpeed - this.swimSpeed) * 0.03;
+      }
+
+      // Advance head forward scaled by global speed multiplier
+      const currentSpeed = this.swimSpeed * speedMultiplier;
+      this.x += Math.cos(this.heading) * currentSpeed;
+      this.y += Math.sin(this.heading) * currentSpeed;
+
+      // Wrap safely if driven way off screen
+      const overflow = 200;
+      if (this.x < -overflow) this.x = width + overflow;
+      if (this.x > width + overflow) this.x = -overflow;
+      if (this.y < -overflow) this.y = height + overflow;
+      if (this.y > height + overflow) this.y = -overflow;
+
+      // 2. Wave Undulation
+      this.wavePhase += this.baseWaveFrequency * speedMultiplier;
+
+      // Update head segment
+      this.segments[0].x = this.x;
+      this.segments[0].y = this.y;
+      this.segments[0].angle = this.heading;
+
+      // 3. Follow-the-Leader Spine Kinematics with dynamic lateral body wave
+      for (let i = 1; i < this.segmentCount; i++) {
+        const prev = this.segments[i - 1];
+        const curr = this.segments[i];
+
+        // Natural wave amplitude increases towards the caudal peduncle & tail
+        const progress = i / this.segmentCount;
+        const waveAmp = Math.pow(progress, 1.35) * 4.2;
+        const lateralOffset = Math.sin(this.wavePhase - i * 0.45) * waveAmp;
+
+        // Follow previous segment maintaining fixed distance
+        const dx = curr.x - prev.x;
+        const dy = curr.y - prev.y;
+        let angle = Math.atan2(dy, dx);
+
+        // Maintain distance
+        curr.x = prev.x + Math.cos(angle) * this.segSpacing;
+        curr.y = prev.y + Math.sin(angle) * this.segSpacing;
+        curr.angle = angle;
+
+        // Apply lateral undulation normal to spine angle
+        const normal = angle + Math.PI / 2;
+        curr.renderX = curr.x + Math.cos(normal) * lateralOffset;
+        curr.renderY = curr.y + Math.sin(normal) * lateralOffset;
+      }
+
+      // Head render coordinates
+      this.segments[0].renderX = this.segments[0].x;
+      this.segments[0].renderY = this.segments[0].y;
+    }
+
+    // Compute thickness profile of a koi
+    getRadiusAt(index) {
+      const t = index / this.segmentCount;
+      // Characteristic koi profile: tapered snout, thickest at shoulder (t ~ 0.28), slim tail
+      let r = 0;
+      if (t < 0.28) {
+        r = 0.5 + (t / 0.28) * 0.5; // ramp up
+      } else {
+        r = 1.0 - Math.pow((t - 0.28) / 0.72, 1.25) * 0.88; // graceful taper down
+      }
+      return Math.max(0.2, r * 14 * this.bodyWidthScale);
+    }
+
+    // Get procedural color at a specific body point
+    getColorAt(segIndex, lateralRatio, isEye) {
+      if (isEye) {
+        return '#080808'; // dark pupil
+      }
+
+      const seed = this.patchSeeds[segIndex] || { noise1: 0, noise2: 0, noise3: 0 };
+      const t = segIndex / this.segmentCount;
+
+      // Procedural blotches via layered harmonics
+      const blotch = Math.sin(t * 12.0 + seed.noise1 * 3.5) * 0.5 +
+                     Math.cos(lateralRatio * 3.5 + seed.noise2 * 2.0) * 0.5;
+
+      const blackBlotch = Math.cos(t * 8.5 + seed.noise3 * 4.0) * 0.5 +
+                          Math.sin(lateralRatio * 5.0) * 0.5;
+
+      let rgb = this.type.baseColor;
+
+      if (this.type.hasBlack && blackBlotch > 0.42 && t > 0.12 && t < 0.85) {
+        rgb = [20, 22, 26]; // Sumi ink black patch
+      } else if (blotch > 0.08 && t > 0.08 && t < 0.9) {
+        rgb = this.type.patchColor;
+      } else if (blotch > -0.15 && t > 0.15 && t < 0.75) {
+        rgb = this.type.accentColor;
+      }
+
+      // Depth shading towards outer body edge
+      const edgeDim = 1.0 - Math.abs(lateralRatio) * 0.28;
+      const r = Math.min(255, Math.floor(rgb[0] * edgeDim));
+      const g = Math.min(255, Math.floor(rgb[1] * edgeDim));
+      const b = Math.min(255, Math.floor(rgb[2] * edgeDim));
+
+      return `rgb(${r},${g},${b})`;
+    }
+  }
+
+  // --- Interactive Water Ripples ---
+  class Ripple {
+    constructor(x, y) {
+      this.x = x;
+      this.y = y;
+      this.radius = 2;
+      this.maxRadius = 140 + Math.random() * 40;
+      this.life = 1.0;
+      this.decay = 0.016; // lasts ~2 seconds at 60fps
+      this.speed = 2.4;
+    }
+
+    update() {
+      this.radius += this.speed;
+      this.life -= this.decay;
+    }
+
+    isDead() {
+      return this.life <= 0 || this.radius >= this.maxRadius;
+    }
+  }
+
+  // Instantiate fish population
+  const FISH_COUNT = 6;
+  let fishes = [];
+  let ripples = [];
+
+  function createPondLife() {
+    fishes = [];
+    for (let i = 0; i < FISH_COUNT; i++) {
+      fishes.push(new KoiFish(i));
+    }
+  }
+
+  // --- Grid Painter Helpers ---
+  // Stamp character onto grid cell if within boundary
+  function stamp(gx, gy, char, color, priority) {
+    if (gx < 0 || gx >= cols || gy < 0 || gy >= rows) return;
+    const idx = gy * cols + gx;
+
+    // Simple layer check: only replace if empty or higher priority
+    if (!gridChars[idx] || (priority && gridChars[idx].p < priority)) {
+      gridChars[idx] = { c: char, p: priority || 1 };
+      gridColors[idx] = color;
+    }
+  }
+
+  // Rasterize a fish onto the monospace grid
+  function renderFishToGrid(fish) {
+    // 1. Rasterize Spine & Body Segments
+    for (let i = 0; i < fish.segmentCount; i++) {
+      const seg = fish.segments[i];
+      const rx = seg.renderX || seg.x;
+      const ry = seg.renderY || seg.y;
+
+      const radius = fish.getRadiusAt(i);
+      const spineAngle = seg.angle;
+      const normAngle = spineAngle + Math.PI / 2;
+
+      // Step along lateral ribs of the fish perpendicular to spine
+      const ribSteps = Math.ceil((radius * 2) / (CELL_W * 0.75));
+      for (let step = -ribSteps; step <= ribSteps; step++) {
+        const ratio = ribSteps === 0 ? 0 : step / ribSteps;
+        const dist = ratio * radius;
+
+        const px = rx + Math.cos(normAngle) * dist;
+        const py = ry + Math.sin(normAngle) * dist;
+
+        const gx = Math.floor(px / CELL_W);
+        const gy = Math.floor(py / CELL_H);
+
+        const absRatio = Math.abs(ratio);
+        if (absRatio > 1.0) continue;
+
+        // Character density based on core vs edge
+        let char = '#';
+        if (absRatio < 0.3) {
+          // Dense central core
+          char = (i % 2 === 0) ? '#' : '%';
+        } else if (absRatio < 0.65) {
+          // Mid-body scales
+          char = (i % 2 === 0) ? 'X' : 'S';
+        } else if (absRatio < 0.9) {
+          // Soft outer contour
+          char = 'o';
+        } else {
+          // Delicate rim
+          char = ':';
+        }
+
+        const color = fish.getColorAt(i, ratio, false);
+        // Higher priority for core segments
+        stamp(gx, gy, char, color, 3);
+      }
+
+      // Eyes: positioned near head around segment index 2
+      if (i === 2) {
+        const eyeOffset = radius * 0.78;
+        for (let side of [-1, 1]) {
+          const eyeX = rx + Math.cos(normAngle) * (side * eyeOffset);
+          const eyeY = ry + Math.sin(normAngle) * (side * eyeOffset);
+          const egx = Math.floor(eyeX / CELL_W);
+          const egy = Math.floor(eyeY / CELL_H);
+          stamp(egx, egy, 'o', '#101214', 5);
+        }
+      }
+
+      // Pectoral Fins (Left & Right) branching from segment 4-6
+      if (i === 4 || i === 5) {
+        const finLength = radius * 1.5;
+        for (let side of [-1, 1]) {
+          const finAngle = normAngle * side - spineAngle * 0.3;
+          for (let f = 1; f <= 3; f++) {
+            const fRatio = f / 3;
+            const fx = rx + Math.cos(finAngle) * (radius + fRatio * finLength);
+            const fy = ry + Math.sin(finAngle) * (radius + fRatio * finLength);
+            const fgx = Math.floor(fx / CELL_W);
+            const fgy = Math.floor(fy / CELL_H);
+            const finChar = f === 3 ? '~' : '/';
+            stamp(fgx, fgy, finChar, 'rgba(235, 235, 230, 0.65)', 2);
+          }
+        }
+      }
+    }
+
+    // 2. Caudal Tail Fin (Dynamic billowing flare)
+    const lastSeg = fish.segments[fish.segmentCount - 1];
+    const tailAngle = lastSeg.angle + Math.PI; // pointing backward
+    const tailNorm = lastSeg.angle + Math.PI / 2;
+    const tailSway = Math.sin(fish.wavePhase - fish.segmentCount * 0.45);
+
+    const tailRays = 5;
+    const tailLength = 22 * fish.bodyWidthScale;
+
+    for (let r = -2; r <= 2; r++) {
+      const raySpread = r * 0.38 + tailSway * 0.3;
+      const rayAng = tailAngle + raySpread;
+
+      for (let len = 5; len <= tailLength; len += 5) {
+        const tx = lastSeg.renderX + Math.cos(rayAng) * len;
+        const ty = lastSeg.renderY + Math.sin(rayAng) * len;
+        const tgx = Math.floor(tx / CELL_W);
+        const tgy = Math.floor(ty / CELL_H);
+
+        const tailRatio = len / tailLength;
+        let tailChar = '=';
+        if (tailRatio > 0.65) tailChar = '~';
+        if (tailRatio > 0.85) tailChar = '-';
+
+        const alpha = Math.max(0.2, 0.85 - tailRatio * 0.45);
+        const tailColor = `rgba(240, 235, 225, ${alpha})`;
+        stamp(tgx, tgy, tailChar, tailColor, 2);
+      }
+    }
+  }
+
+  // Rasterize circular ripples
+  function renderRipplesToGrid() {
+    for (let rip of ripples) {
+      const charSet = ['o', '/', '-', '~', '.'];
+      const char = charSet[Math.floor((1 - rip.life) * charSet.length)] || '.';
+      const alpha = Math.max(0.05, rip.life * 0.7);
+      const color = `rgba(130, 185, 225, ${alpha})`;
+
+      // Sample points along perimeter of expanding oval
+      const circumference = 2 * Math.PI * rip.radius;
+      const steps = Math.min(120, Math.max(16, Math.floor(circumference / 6)));
+
+      for (let s = 0; s < steps; s++) {
+        const angle = (s / steps) * Math.PI * 2;
+        // Slight vertical compression for perspective depth
+        const px = rip.x + Math.cos(angle) * rip.radius;
+        const py = rip.y + Math.sin(angle) * (rip.radius * 0.72);
+
+        const gx = Math.floor(px / CELL_W);
+        const gy = Math.floor(py / CELL_H);
+
+        stamp(gx, gy, char, color, 4);
+      }
+    }
+  }
+
+  // --- Main Render Cycle ---
+  function drawFrame() {
+    // Clear screen with deep pond color
+    ctx.fillStyle = '#030810';
+    ctx.fillRect(0, 0, width, height);
+
+    // Clear grid buffers
+    const total = cols * rows;
+    for (let i = 0; i < total; i++) {
+      gridChars[i] = null;
+      gridColors[i] = null;
+    }
+
+    // Apply sparse water baseline
+    for (let i = 0; i < total; i++) {
+      const bg = waterBackground[i];
+      if (bg) {
+        gridChars[i] = { c: bg.char, p: 0 };
+        gridColors[i] = bg.color;
+      }
+    }
+
+    // Draw fish into grid
+    for (let f = 0; f < fishes.length; f++) {
+      renderFishToGrid(fishes[f]);
+    }
+
+    // Draw ripples into grid
+    renderRipplesToGrid();
+
+    // Flush grid onto canvas using monospace fillText
+    ctx.font = `${FONT_SIZE}px ${FONT_NAME}`;
+    ctx.textBaseline = 'top';
+
+    // Batch rendering by text colors to reduce context switching
+    let currentDrawColor = null;
+    ctx.fillStyle = '#64748b';
+
+    for (let y = 0; y < rows; y++) {
+      const rowOffset = y * cols;
+      const screenY = y * CELL_H;
+
+      for (let x = 0; x < cols; x++) {
+        const cell = gridChars[rowOffset + x];
+        if (cell) {
+          const col = gridColors[rowOffset + x];
+          if (col !== currentDrawColor) {
+            ctx.fillStyle = col;
+            currentDrawColor = col;
+          }
+          ctx.fillText(cell.c, x * CELL_W, screenY);
+        }
+      }
+    }
+  }
+
+  // Animation Loop
+  function loop() {
+    // Update fish mechanics
+    for (let f = 0; f < fishes.length; f++) {
+      fishes[f].update();
+    }
+
+    // Update ripples
+    for (let i = ripples.length - 1; i >= 0; i--) {
+      ripples[i].update();
+      if (ripples[i].isDead()) {
+        ripples.splice(i, 1);
+      }
+    }
+
+    drawFrame();
+    requestAnimationFrame(loop);
+  }
+
+  // --- Interactive Events ---
+  function handleSpawnRipple(e) {
+    const rect = canvas.getBoundingClientRect();
+    const clientX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0].clientX);
+    const clientY = e.clientY !== undefined ? e.clientY : (e.touches && e.touches[0].clientY);
+
+    if (clientX !== undefined && clientY !== undefined) {
+      const x = clientX - rect.left;
+      const y = clientY - rect.top;
+
+      ripples.push(new Ripple(x, y));
+      if (ripples.length > 12) ripples.shift(); // cap active ripples
+
+      // Fish softly steer away from ripple epicenter
+      for (let fish of fishes) {
+        const dx = fish.x - x;
+        const dy = fish.y - y;
+        const dist = Math.hypot(dx, dy);
+        if (dist < 180 && dist > 1) {
+          const scurryAngle = Math.atan2(dy, dx);
+          fish.heading = fish.heading * 0.4 + scurryAngle * 0.6;
+          fish.swimSpeed = Math.min(3.2, fish.swimSpeed * 1.35);
+        }
+      }
+    }
+  }
+
+  const heroEl = document.querySelector('header');
+  if (heroEl) {
+    heroEl.addEventListener('click', handleSpawnRipple, { passive: true });
+    heroEl.addEventListener('touchstart', handleSpawnRipple, { passive: true });
+  }
+
+  // Slider listener for speed control
+  const speedSlider = document.getElementById('speedSlider');
+  const speedVal = document.getElementById('speedVal');
+  if (speedSlider && speedVal) {
+    speedSlider.addEventListener('input', (e) => {
+      speedMultiplier = parseFloat(e.target.value);
+      speedVal.textContent = speedMultiplier.toFixed(1) + 'x';
+    });
+
+    // Prevent clicking slider from spawning ripples on the pond
+    speedSlider.addEventListener('click', (e) => e.stopPropagation());
+    speedSlider.addEventListener('touchstart', (e) => e.stopPropagation(), { passive: true });
+  }
+
+  // Clean viewport resize handler
+  let resizeDebounce;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeDebounce);
+    resizeDebounce = setTimeout(() => {
+      initGrid();
+      if (prefersReducedMotion) {
+        drawFrame();
+      }
+    }, 120);
+  });
+
+  // --- Initialize ---
+  initGrid();
+  createPondLife();
+
+  if (prefersReducedMotion) {
+    // Static snapshot without continuous rAF loop
+    drawFrame();
+  } else {
+    requestAnimationFrame(loop);
+  }
+
+})();
+
+</script>
+<script>
+// Ambient Game of Life background (page palette: amber ramp, cozy scale from the Game of Life app)
+(function () {
+  'use strict';
+  var canvas = document.getElementById('lifeBg');
+  if (!canvas) return;
+  var section = document.getElementById('work');
+  var ctx = canvas.getContext('2d');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var PITCH = 22, GAP = 4, RADIUS = 5;
+  var PALETTE = [
+    [240, 168, 50], [255, 190, 85], [240, 168, 50],
+    [255, 205, 120], [214, 138, 32]
+  ];
+  var GEN_MS = 210;
+
+  var cols = 0, rows = 0, cells = null, fade = null, tint = null;
+  var running = true, lastGen = 0;
+
+  function seed() {
+    var n = cols * rows;
+    cells = new Uint8Array(n);
+    fade = new Float32Array(n);
+    tint = new Uint8Array(n);
+    for (var i = 0; i < n; i++) {
+      tint[i] = Math.floor(Math.random() * PALETTE.length);
+      if (Math.random() < 0.10) { cells[i] = 1; fade[i] = 1; }
+    }
+    function put(x, y) { if (x >= 0 && y >= 0 && x < cols && y < rows) { cells[y * cols + x] = 1; fade[y * cols + x] = 1; } }
+    var gx = 4, gy = 3; // glider
+    put(gx + 1, gy); put(gx + 2, gy + 1); put(gx, gy + 2); put(gx + 1, gy + 2); put(gx + 2, gy + 2);
+    var bx = Math.max(2, cols - 9), by = Math.max(2, rows - 6); // blinker
+    put(bx, by); put(bx + 1, by); put(bx + 2, by);
+  }
+
+  function size() {
+    var w = section.clientWidth, h = section.clientHeight;
+    var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    canvas.width = Math.floor(w * dpr);
+    canvas.height = Math.floor(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    cols = Math.ceil(w / PITCH);
+    rows = Math.ceil(h / PITCH);
+    seed();
+  }
+
+  function step() {
+    var next = new Uint8Array(cols * rows);
+    var alive = 0;
+    for (var y = 0; y < rows; y++) {
+      for (var x = 0; x < cols; x++) {
+        var count = 0;
+        for (var dy = -1; dy <= 1; dy++) {
+          for (var dx = -1; dx <= 1; dx++) {
+            if (!dx && !dy) continue;
+            var nx = (x + dx + cols) % cols;
+            var ny = (y + dy + rows) % rows;
+            if (cells[ny * cols + nx]) count++;
+          }
+        }
+        var i = y * cols + x;
+        var on = cells[i] ? (count === 2 || count === 3) : (count === 3);
+        next[i] = on ? 1 : 0;
+        if (on) alive++;
+      }
+    }
+    cells = next;
+    if (alive === 0) seed();
+  }
+
+  function draw() {
+    var w = section.clientWidth, h = section.clientHeight;
+    ctx.clearRect(0, 0, w, h);
+    var sizePx = PITCH - GAP;
+    for (var y = 0; y < rows; y++) {
+      for (var x = 0; x < cols; x++) {
+        var i = y * cols + x;
+        if (cells[i]) fade[i] = 1;
+        else if (fade[i] > 0) fade[i] = Math.max(0, fade[i] - 0.07);
+        var f = fade[i];
+        if (f <= 0.02) continue;
+        var c = PALETTE[tint[i]];
+        ctx.fillStyle = 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + (f * (cells[i] ? 0.85 : 0.4)).toFixed(3) + ')';
+        var px = x * PITCH + GAP / 2, py = y * PITCH + GAP / 2;
+        ctx.beginPath();
+        if (ctx.roundRect) ctx.roundRect(px, py, sizePx, sizePx, RADIUS);
+        else ctx.rect(px, py, sizePx, sizePx);
+        ctx.fill();
+      }
+    }
+  }
+
+  function loop(t) {
+    if (running) {
+      if (t - lastGen >= GEN_MS) { step(); lastGen = t; }
+      draw();
+    }
+    requestAnimationFrame(loop);
+  }
+
+  size();
+  if (reduced) {
+    draw();
+  } else {
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        running = entries[0].isIntersecting;
+      }, { threshold: 0.02 }).observe(section);
+    }
+    requestAnimationFrame(loop);
+  }
+
+  var rt;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () { size(); if (reduced) draw(); }, 150);
+  });
+})();
+
+</script>
+</body>
+</html>
