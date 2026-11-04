@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cristobal Builds — Websites, Web Tools & Mobile Apps</title>
-<meta name="description" content="Websites, web tools, and mobile apps for small businesses. Fixed prices, delivered in days, you own 100% of the code.">
+<title>Cristobal Builds — Social Media, Websites, Web Tools & Mobile Apps</title>
+<meta name="description" content="Social media management, websites, web tools, and mobile apps for small businesses. Fixed prices, delivered in days, you own 100% of the code.">
 <style>
 @font-face {
   font-family: 'Archivo';
@@ -95,6 +95,7 @@
 
   /* top bar */
   .topbar{position:sticky;top:0;z-index:50;background:rgba(250,248,243,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  section[id]{scroll-margin-top:74px}
   .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
   .brand{font-family:var(--mono);font-weight:600;font-size:14px;letter-spacing:.04em;text-decoration:none;color:var(--text)}
   .brand b{color:var(--amber)}
@@ -126,7 +127,7 @@
   .btn.line:hover{border-color:var(--amber);color:var(--amber)}
 
   /* index jump */
-  .indexnav{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-bottom:20px}
+  .indexnav{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-bottom:20px}
   .indexnav a{padding:20px 22px;text-decoration:none;color:var(--text);border-left:1px solid var(--line);transition:background .15s}
   .indexnav a:first-child{border-left:none}
   .indexnav a:hover{background:var(--surface)}
@@ -147,6 +148,7 @@
 .examples .exlabel{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-right:2px}
 .examples a{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--text);text-decoration:none;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;transition:border-color .15s,color .15s}
 .examples a:hover{border-color:var(--amber);color:var(--amber)}
+.examples span.add{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--text);border:1px dashed var(--line);border-radius:999px;padding:6px 12px}
 
   @media(max-width:760px){.pack-head{grid-template-columns:1fr}}
   .pack-head .n{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--amber);margin-bottom:10px}
@@ -309,11 +311,11 @@
 <header>
   <div class="pond-bg" aria-hidden="true"><canvas id="pondCanvas"></canvas></div>
   <div class="wrap">
-    <div class="no">// FREELANCE FRONT-END — LAURENTIANS, QC</div>
-    <h1>Websites, tools &amp; apps <span class="dim">for small businesses.</span></h1>
-    <p class="lede">You bring the business. I design and build the web part, test every detail myself, and hand you <strong>100% of the code</strong>. No jargon, no lock-in, no monthly fees to me.</p>
+    <div class="no">// FREELANCE SOCIAL &amp; FRONT-END — LAURENTIANS, QC</div>
+    <h1>Social media, websites, tools &amp; apps <span class="dim">for small businesses.</span></h1>
+    <p class="lede">You bring the business. I run your social media and build your web tools, test every detail myself, and hand you <strong>100% of the code</strong>. No jargon, no lock-in, and every price on the table.</p>
     <div class="specstrip">
-      <span>Fixed prices</span><span>3–7 day delivery</span><span>You own the code</span><span>No subscriptions</span><span>Human-reviewed</span>
+      <span>Fixed prices</span><span>3–7 day delivery</span><span>You own the code</span><span>Month-to-month plans</span><span>Human-reviewed</span>
     </div>
     <div class="cta-row">
       <a class="btn solid" href="#catalog">Browse the catalog</a>
@@ -324,22 +326,57 @@
 
 <div class="wrap">
   <div class="indexnav">
-    <a href="#svc-web"><span class="n">Nº01</span><span class="t">Business website</span><span class="s">FROM $35 CAD · 3–5 DAYS</span></a>
-    <a href="#svc-tool"><span class="n">Nº02</span><span class="t">Custom web tool</span><span class="s">FROM $50 CAD · 5–7 DAYS</span></a>
-    <a href="#svc-app"><span class="n">Nº03</span><span class="t">App conversion</span><span class="s">FROM $60 CAD · 5–7 DAYS</span></a>
+    <a href="#svc-social"><span class="n">Nº01</span><span class="t">Social media management</span><span class="s">SETUP $75 CAD · PLANS FROM $150/MO</span></a>
+    <a href="#svc-web"><span class="n">Nº02</span><span class="t">Business website</span><span class="s">FROM $35 CAD · 3–5 DAYS</span></a>
+    <a href="#svc-tool"><span class="n">Nº03</span><span class="t">Custom web tool</span><span class="s">FROM $50 CAD · 5–7 DAYS</span></a>
+    <a href="#svc-app"><span class="n">Nº04</span><span class="t">App conversion</span><span class="s">FROM $60 CAD · 5–7 DAYS</span></a>
   </div>
 </div>
 
 <section id="catalog">
   <div class="wrap">
     <div class="kicker">The catalog</div>
-    <h2>3 services. 9 packages. Every price on the table.</h2>
+    <h2>4 services. 12 packages. Every price on the table.</h2>
     <p class="sub">Read the whole index before you pay anything. Timelines are commitments, not estimates. If I can't hit one, I'll tell you before you spend a cent.</p>
+
+    <div class="pack" id="svc-social">
+      <div class="pack-head">
+        <div>
+          <div class="n">Nº01 — SOCIAL MEDIA</div>
+          <h3>Social media management</h3>
+          <p>Your Instagram and TikTok, run properly. I plan, write and schedule your posts in your voice, so your business shows up every week without you thinking about it.</p>
+        </div>
+        <ol class="how">
+          <li>You send photos &amp; clips (phone is fine)</li>
+          <li>I plan, caption &amp; schedule</li>
+          <li>You approve the month in one sitting</li>
+        </ol>
+      </div>
+<div class="examples"><span class="exlabel">Examples</span><a href="https://www.instagram.com/twostorytails/" target="_blank" rel="noopener">TwoStoryTails on Instagram ↗</a><a href="https://www.tiktok.com/@twostorytails" target="_blank" rel="noopener">TwoStoryTails on TikTok ↗</a></div>
+      <div class="tiers">
+        <a class="tier" href="#contact">
+          <div class="tn">Setup<small>Start from zero</small></div>
+          <div class="spec">Profile setup or cleanup ◆ Bio &amp; links ◆ Content pillars ◆ First-month calendar ◆ Caption voice guide<br><b>5-day</b> delivery ◆ <b>1</b> revision</div>
+          <div class="price"><span class="amt">$75<span class="cur">CAD</span></span><span class="go">Choose →</span></div>
+        </a>
+        <a class="tier hot" href="#contact">
+          <div class="tn">Monthly Core <span class="flag">Most popular</span><small>Show up every week</small></div>
+          <div class="spec"><b>6</b> posts a month ◆ Captions &amp; hashtags ◆ Scheduled for you ◆ Monthly summary ◆ <b>1</b> language (EN or FR)<br>Month to month ◆ Pause anytime</div>
+          <div class="price"><span class="amt">$150<span class="cur">CAD/mo</span></span><span class="go">Choose →</span></div>
+        </a>
+        <a class="tier" href="#contact">
+          <div class="tn">Monthly Plus<small>Grow</small></div>
+          <div class="spec"><b>12</b> posts a month ◆ Stories between posts ◆ Comment replies ◆ <b>Bilingual included</b> ◆ Monthly report &amp; next-month plan<br>Month to month ◆ Pause anytime</div>
+          <div class="price"><span class="amt">$250<span class="cur">CAD/mo</span></span><span class="go">Choose →</span></div>
+        </a>
+      </div>
+<div class="examples"><span class="exlabel">Add-ons</span><span class="add">Bilingual (EN + FR on every post) — <b>+$50/mo</b> on Core, included in Plus</span><span class="add">On-site content shoot, Laurentians — <b>+$100</b> per session</span></div>
+    </div>
 
     <div class="pack" id="svc-web">
       <div class="pack-head">
         <div>
-          <div class="n">Nº01 — WEBSITE</div>
+          <div class="n">Nº02 — WEBSITE</div>
           <h3>Business website</h3>
           <p>A complete website for your business. You bring the words, logo, and photos (or I help you draft them). I ship the site.</p>
         </div>
@@ -372,7 +409,7 @@
     <div class="pack" id="svc-tool">
       <div class="pack-head">
         <div>
-          <div class="n">Nº02 — WEB TOOL</div>
+          <div class="n">Nº03 — WEB TOOL</div>
           <h3>Custom web tool</h3>
           <p>A price calculator, booking widget, quiz, or tracker built for your business. Works around the clock, turning visitors into leads while you sleep.</p>
         </div>
@@ -405,7 +442,7 @@
     <div class="pack" id="svc-app">
       <div class="pack-head">
         <div>
-          <div class="n">Nº03 — APP CONVERSION</div>
+          <div class="n">Nº04 — APP CONVERSION</div>
           <h3>Mobile app from your website</h3>
           <p>Have a web app your customers love? I convert it into a real installable mobile app, ready for the App Store and Google Play.</p>
         </div>
@@ -434,6 +471,28 @@
         </a>
       </div>
     </div>
+
+    <div class="pack" id="bundle">
+      <div class="pack-head">
+        <div>
+          <div class="n">THE BUNDLE</div>
+          <h3>Start with a website, setup is on me</h3>
+          <p>Order any website, start a monthly social plan, and your Social Setup ($75) is free. Site, profiles and your first month of posts, launched together, saying the same thing.</p>
+        </div>
+        <ol class="how">
+          <li>Pick any website package</li>
+          <li>Start a monthly social plan</li>
+          <li>Social Setup is free</li>
+        </ol>
+      </div>
+      <div class="tiers">
+        <a class="tier" href="#contact">
+          <div class="tn">Launch<small>Website + plan, to launch</small></div>
+          <div class="spec"><b>Business website</b> + <b>Monthly Core</b> ◆ Social Setup included free<br>Site in 4 days ◆ First month scheduled</div>
+          <div class="price"><span class="amt">$230<span class="cur">CAD</span></span><span class="go">Choose →</span></div>
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -443,6 +502,9 @@
     <div class="kicker">Index</div>
     <h2>Things I've built</h2>
     <p class="sub">Live apps and their source. Proof of work, browsable before you commit.</p>
+    <div class="specstrip">
+      <span><strong>600K+</strong> followers managed</span><span><strong>400K+</strong> views on my own brand</span><span><strong>30+</strong> sites, tools &amp; apps shipped</span>
+    </div>
     <div class="wtable">
       <a class="wrow" href="https://heycristobal.com/Lamplight/" target="_blank" rel="noopener"><span class="n">01</span><span class="t">Lamplight</span><span class="d">Calm reading app · web / mobile</span><span class="l">VIEW LIVE →</span></a>
 <a class="wrow" href="https://heycristobal.com/Voxel-lofi-room/" target="_blank" rel="noopener"><span class="n">02</span><span class="t">Lofi Rooms</span><span class="d">Cozy voxel room builder · web / mobile</span><span class="l">EXPLORE →</span></a>
@@ -512,7 +574,7 @@
         <div class="tags"><span>EN</span><span>ES</span><span>FR···</span></div>
       </div>
       <div>
-        <p>Front-end builder with a <strong>diploma in Mobile Application Design and Development</strong> and a background in professional communications. My work is built to be clear and easy for non-technical people to use.</p>
+        <p>Social media specialist and front-end builder. I ran channels with <strong>600K+ followers</strong> for a national agency and came up through professional communications; the <strong>diploma in Mobile Application Design and Development</strong> is why your posts have somewhere good to land. My work is built to be clear and easy for non-technical people to use.</p>
         <p>I run an <strong>AI-accelerated workflow</strong>: I design every experience myself, direct the build with modern tools, and personally test the result before it reaches you.</p>
         <p class="mono" style="font-size:13px;color:var(--faint)">BASE_ Laurentians, QC · CLIENTS_ everywhere · LANG_ English, Spanish</p>
       </div>
@@ -525,12 +587,17 @@
     <div class="kicker">FAQ</div>
     <h2>Questions, answered</h2>
     <p class="sub">The things people usually ask before starting.</p>
-    <details><summary>How fast is "fast," really?</summary><p>Single-page sites: 3–5 days. Tools and app conversions: 5–7 days. Timelines are commitments, not estimates. If I can't hit one, I'll tell you before you pay anything.</p></details>
+    <details><summary>How fast is "fast," really?</summary><p>Single-page sites: 3–5 days. Tools and app conversions: 5–7 days. Social media setups: 5 days. Timelines are commitments, not estimates. If I can't hit one, I'll tell you before you pay anything.</p></details>
     <details><summary>What do you need from me to start?</summary><p>Your text, logo, and photos. No copy ready? I help draft it — words are part of the service.</p></details>
-    <details><summary>Do I own the finished website?</summary><p>Completely. All files, 100% of the code. No lock-in, no monthly fees to me, no holding your site hostage.</p></details>
+    <details><summary>Do I own the finished website?</summary><p>Completely. All files, 100% of the code. No lock-in, no hosting fees to me, no holding your site hostage.</p></details>
     <details><summary>What does "AI-accelerated" mean?</summary><p>I design the experience and direct the build with modern AI tools, then personally test every detail. Custom work, faster and more affordable, with a human reviewing everything.</p></details>
     <details><summary>What if I need changes after delivery?</summary><p>Revisions are included during the build. After delivery, small tweaks are a quick message away, quoted fairly.</p></details>
     <details><summary>Can you match my existing branding?</summary><p>Yes. Send your logo, colors, and fonts. No branding yet? I'll propose a clean look as part of the build.</p></details>
+    <details><summary>Do I have to take social and a website together?</summary><p>No. Every service stands alone. Start with a website and a monthly plan, though, and your Social Setup is free.</p></details>
+    <details><summary>What do you need from me each month?</summary><p>One batch of photos and clips from your phone. I handle planning, captions and scheduling, and you approve the month in one sitting.</p></details>
+    <details><summary>Which platforms?</summary><p>Instagram and TikTok. Two platforms done well beat four done thin.</p></details>
+    <details><summary>What language do you post in?</summary><p>English, French, or both, and Spanish if your audience needs it. I work with translation tools and you approve the final text before anything goes out. Nothing posts unapproved. If you take both languages, they ride on the same post, your main language first.</p></details>
+    <details><summary>Can I pause or cancel the monthly?</summary><p>Anytime. Month to month, no contract, no cancellation fee. Pause for a slow season and restart when you need it.</p></details>
   </div>
 </section>
 
@@ -549,7 +616,7 @@
 <footer>
   <div class="wrap">
     <p>© 2026 CRISTOBAL.BUILDS</p>
-    <p>WEBSITES ◆ WEB TOOLS ◆ MOBILE APPS</p>
+    <p>SOCIAL MEDIA ◆ WEBSITES ◆ WEB TOOLS ◆ MOBILE APPS</p>
   </div>
 </footer>
 
@@ -559,7 +626,7 @@
 
   /* tech stack marquee: build each lane, then clone it once for a seamless loop */
   var TOOLS = ['HTML5','CSS3','JavaScript','Three.js','Tailwind CSS','Supabase','Firebase','Capacitor','Git','GitHub Pages'];
-  var CAPS  = ['Single-file web apps','Responsive design','UI/UX design','Progressive web apps','REST APIs','Offline-first storage','Voxel & 3D scenes','Icon & splash design','App Store prep','Bilingual EN / ES'];
+  var CAPS  = ['Single-file web apps','Responsive design','UI/UX design','Progressive web apps','REST APIs','Offline-first storage','Voxel & 3D scenes','Icon & splash design','App Store prep','Social media management','Bilingual EN / FR / ES'];
 
   function fillLane(id, items, cls){
     var track = document.getElementById(id);
